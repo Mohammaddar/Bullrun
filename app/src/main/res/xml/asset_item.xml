@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Describe the animation for activity_step1.xml -->
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- A transition describes an animation via start and end state -->
+    <Transition
+        app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="350"
+        app:layoutDuringTransition="ignoreRequest">
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/motion_layout" />
+
+        <KeyFrameSet>
+
+            <!--            <KeyAttribute-->
+            <!--                app:framePosition="50"-->
+            <!--                app:motionProgress="100"-->
+            <!--                app:motionTarget="@id/layout_asset2" />-->
+
+            <!--            <KeyAttribute-->
+            <!--                app:framePosition="0"-->
+            <!--                app:motionTarget="@id/motion_layout">-->
+            <!--                <CustomAttribute-->
+            <!--                    app:attributeName="layout_height"-->
+            <!--                    app:customDimension="80dp" />-->
+            <!--            </KeyAttribute>-->
+
+            <!--            <KeyAttribute-->
+            <!--                app:framePosition="60"-->
+            <!--                app:motionTarget="@id/motion_layout">-->
+            <!--                <CustomAttribute-->
+            <!--                    app:attributeName="layout_height"-->
+            <!--                    app:customDimension="80dp" />-->
+            <!--            </KeyAttribute>-->
+
+            <!--            <KeyAttribute-->
+            <!--                app:framePosition="100"-->
+            <!--                app:motionTarget="@id/motion_layout">-->
+            <!--                <CustomAttribute-->
+            <!--                    app:attributeName="layout_height"-->
+            <!--                    app:customDimension="180dp" />-->
+            <!--            </KeyAttribute>-->
+
+            <KeyAttribute
+                app:framePosition="0"
+                app:motionTarget="@id/layout_asset">
+                <CustomAttribute
+                    app:attributeName="layout_height"
+                    app:customDimension="80dp" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="60"
+                app:motionTarget="@id/layout_asset">
+                <CustomAttribute
+                    app:attributeName="layout_height"
+                    app:customDimension="180dp" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/layout_asset">
+                <CustomAttribute
+                    app:attributeName="layout_height"
+                    app:customDimension="180dp" />
+            </KeyAttribute>
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <!-- Constraints to apply at the start of the animation -->
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/motion_layout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="top">
+            <CustomAttribute
+                app:attributeName="layout_height"
+                app:customDimension="80dp" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/layout_asset"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        <Constraint-->
+        <!--            android:id="@+id/layout_asset2"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_marginTop="-10dp"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/layout_asset"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            android:visibility="gone"/>-->
+
+    </ConstraintSet>
+
+    <!-- Constraints to apply at the end of the animation -->
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/motion_layout"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_gravity="top">
+            <CustomAttribute
+                app:attributeName="layout_height"
+                app:customDimension="180dp" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/layout_asset"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        <Constraint-->
+        <!--            android:id="@+id/layout_asset2"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="240dp"-->
+        <!--            android:layout_marginTop="0dp"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/layout_asset"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            android:visibility="visible"/>-->
+
+    </ConstraintSet>
+</MotionScene>

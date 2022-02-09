@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="context"
+            type="android.content.Context" />
+        <variable
+            name="coin"
+            type="com.example.bullrun.data.database.model.Coin" />
+        <variable
+            name="holder"
+            type="com.example.bullrun.ui.mainList.MainListVH" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="@{() -> holder.onClickListener(coin)}">
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@{coin.coinName}"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/txt_24hchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text='@{String.format("%.2f",coin.priceChangePercentage24h)+"%"}'
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/txt_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="+4.3%" />
+
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="@{String.valueOf(coin.currentPrice)}"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="50248$" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <TextView
+            android:id="@+id/txt_row_number"
+            android:layout_width="40dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="16dp"
+            android:text="@{String.valueOf(coin.marketCapRank)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="125"
+            android:textSize="12sp"/>
+
+        <ImageView
+            android:id="@+id/img_logo"
+            context="@{context}"
+            imageUrl="@{coin.image}"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="2dp"
+            android:contentDescription="@string/coin_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_row_number"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

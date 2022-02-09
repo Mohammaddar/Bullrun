@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Bullrun</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Bullrun">Bullrun</string>
+    <string name="Search">Search</string>
+    <string name="coin_logo">Coin Logo</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="buying_price">Buying Price...</string>
+    <string name="buying_amount">Buying Amount</string>
+    <string name="buy">BUY</string>
+    <string name="sell">SELL</string>
+    <string name="_0_00">0.00</string>
+    <string name="price">Price :</string>
+    <string name="amount">Amount :</string>
+    <string name="currently_holding">Currently Holding :</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="assets_overview">Assets Overview</string>
+    <string name="today">Today</string>
+</resources>
