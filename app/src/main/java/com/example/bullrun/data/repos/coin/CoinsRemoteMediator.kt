@@ -11,6 +11,7 @@ import com.example.bullrun.data.database.model.Coin
 import com.example.bullrun.data.database.model.RemoteKeys
 import com.example.bullrun.data.remote.CoinService
 import drewcarlson.coingecko.error.CoinGeckoApiException
+import java.util.*
 import kotlin.coroutines.cancellation.CancellationException
 
 private const val GITHUB_STARTING_PAGE_INDEX = 1
@@ -97,6 +98,7 @@ class CoinsRemoteMediator(
                         coinId = it.id.toString(),
                         marketCapRank = it.marketCapRank,
                         coinName = it.name,
+                        coinSymbol = it.symbol?.toUpperCase(Locale.ROOT),
                         priceChangePercentage24h = it.priceChangePercentage24h,
                         currentPrice = it.currentPrice,
                         image = it.image

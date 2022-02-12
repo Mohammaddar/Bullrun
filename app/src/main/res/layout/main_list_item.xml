@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="context"
             type="android.content.Context" />
+
         <variable
             name="coin"
             type="com.example.bullrun.data.database.model.Coin" />
+
         <variable
             name="holder"
             type="com.example.bullrun.ui.mainList.MainListVH" />
@@ -17,20 +20,42 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="64dp"
         android:onClick="@{() -> holder.onClickListener(coin)}">
 
         <TextView
             android:id="@+id/txt_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="12dp"
+            android:text="@{coin.coinName}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="Bitcoin adnadnaiwdnwiad"
+            android:singleLine="true"
+            app:layout_constraintBottom_toTopOf="@id/guideline4"
+            app:layout_constraintEnd_toStartOf="@+id/txt_24hchange"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/img_logo"
+            android:gravity="bottom"/>
+
+        <TextView
+            android:id="@+id/txt_symbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:text="@{coin.coinName}"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"
+            android:text="@{coin.coinSymbol}"
+            android:textColor="@color/gray_500"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/txt_24hchange"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/img_logo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Bitcoin" />
+            app:layout_constraintTop_toBottomOf="@id/guideline4"
+            tools:text="BTC"
+            android:gravity="top"/>
 
         <TextView
             android:id="@+id/txt_24hchange"
@@ -38,11 +63,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text='@{String.format("%.2f",coin.priceChangePercentage24h)+"%"}'
-            android:textSize="14sp"
+            android:textColor="@color/green"
+            android:textSize="13sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/txt_name"
+            app:layout_constraintEnd_toEndOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="+4.3%" />
 
@@ -50,9 +76,11 @@
             android:id="@+id/txt_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:text="@{String.valueOf(coin.currentPrice)}"
+            android:textColor="@color/gray_900"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -63,32 +91,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.75" />
+            app:layout_constraintGuide_percent="0.65" />
 
         <TextView
             android:id="@+id/txt_row_number"
-            android:layout_width="40dp"
-            android:layout_height="14dp"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
             android:layout_marginStart="16dp"
-            android:text="@{String.valueOf(coin.marketCapRank)}"
+            android:background="@drawable/shape_txt_rank"
+            android:gravity="center"
+            android:text='@{String.valueOf(coin.marketCapRank)}'
+            android:textColor="@color/black"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="125"
-            android:textSize="12sp"/>
+            tools:text="1222" />
 
         <ImageView
             android:id="@+id/img_logo"
             context="@{context}"
             imageUrl="@{coin.image}"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="2dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
             android:contentDescription="@string/coin_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txt_row_number"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.52" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:dividerColor="@color/gray_300"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,13 +3,15 @@ package com.example.bullrun.ui.mainList
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bullrun.databinding.MainListItemBinding
+import com.example.bullrun.R
 import com.example.bullrun.data.database.model.Coin
+import com.example.bullrun.databinding.MainListItemBinding
 
-class MainListAdapter(val context: Context, private val onClick:(coin:Coin)->Unit) :
+class MainListAdapter(val context: Context, private val onClick: (coin: Coin) -> Unit) :
     PagingDataAdapter<Coin, MainListVH>(MainListDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListVH {
         return MainListVH.create(parent)
@@ -17,7 +19,7 @@ class MainListAdapter(val context: Context, private val onClick:(coin:Coin)->Uni
 
     override fun onBindViewHolder(holder: MainListVH, position: Int) {
         getItem(position)?.let {
-            holder.bind(it, context,onClick)
+            holder.bind(it, context, onClick)
         }
     }
 }
@@ -25,15 +27,36 @@ class MainListAdapter(val context: Context, private val onClick:(coin:Coin)->Uni
 class MainListVH private constructor(private val binding: MainListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    lateinit var onClick:(coin:Coin)->Unit
-    fun bind(coin: Coin, context: Context,onClick:(coin:Coin)->Unit) {
-        this.onClick=onClick
+    lateinit var onClick: (coin: Coin) -> Unit
+    fun bind(coin: Coin, context: Context, onClick: (coin: Coin) -> Unit) {
+        this.onClick = onClick
         binding.coin = coin
         binding.context = context
-        binding.holder=this
+        binding.holder = this
         binding.executePendingBindings()
+        when {
+            coin.priceChangePercentage24h > 0 -> binding.txt24hchange.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.green
+                )
+            )
+            coin.priceChangePercentage24h == 0.0 -> binding.txt24hchange.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.gray_500
+                )
+            )
+            coin.priceChangePercentage24h < 0 -> binding.txt24hchange.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.red
+                )
+            )
+        }
     }
-    fun onClickListener(coin: Coin)=onClick(coin)
+
+    fun onClickListener(coin: Coin) = onClick(coin)
 
     companion object {
         fun create(parent: ViewGroup): MainListVH {

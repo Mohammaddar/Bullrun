@@ -18,6 +18,9 @@ data class Coin(
     @ColumnInfo(name = "name")
     val coinName: String? = null,
 
+    @ColumnInfo(name = "symbol")
+    val coinSymbol: String? = null,
+
     @ColumnInfo(name = "price_change_percentage_24h")
     val priceChangePercentage24h: Double = 0.0,
 

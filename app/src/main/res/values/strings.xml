@@ -16,4 +16,9 @@
     <string name="portfolio">Portfolio</string>
     <string name="assets_overview">Assets Overview</string>
     <string name="today">Today</string>
+    <string name="crypto_assets">Crypto Assets</string>
+    <string name="all">All</string>
+    <string name="my_watchlist">My Watchlist</string>
+    <string name="refresh">Refresh</string>
+    <string name="search">Search</string>
 </resources>
