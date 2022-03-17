@@ -1,4 +1,4 @@
-package com.example.bullrun.ui.coinInfo
+package com.example.bullrun.ui.fragments.coinInfo
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
