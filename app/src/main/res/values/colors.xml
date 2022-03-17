@@ -6,18 +6,44 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="black_100">#292929</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black_light">#5F5F5F</color>
     <color name="green_light">#38CCA0</color>
     <color name="gray_100">#F2F2F2</color>
+    <color name="gray_200">#EFEFEF</color>
     <color name="gray_300">#E6E6E6</color>
     <color name="gray_400">#DEDEDE</color>
+    <color name="gray_450">#C5C4C4</color>
     <color name="gray_500">#939393</color>
+    <color name="gray_700">#757575</color>
+    <color name="gray_800">#595858</color>
     <color name="gray_900">#505050</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="background">#F6F5F5</color>
+    <color name="background">#FFFFFF</color>
     <color name="background_shade2">#E9E8EA</color>
-    <color name="primary">#1A1A40</color>
+    <color name="background_shade3">#F6F5F5</color>
+    <color name="background_shade4">#EFEFEF</color>
+    <color name="primary">#202020</color>
     <color name="green">#219F94</color>
     <color name="red">#FF8D94</color>
+    <color name="silver_200">#A4A4B2</color>
+    <color name="silver_700">#E9E8EA</color>
+    <color name="bg_green">#E5DEF0</color>
+    <color name="bg_green_dark">#6CA882</color>
+    <color name="bg_gray">#E6EAED</color>
+    <color name="bg_gray_dark">#A0A4A8</color>
+    <color name="bg_orange">#F6F0D8</color>
+    <color name="bg_orange_dark">#ECE4C3</color>
+    <color name="bg_orange_too_dark">#C8BA7F</color>
+    <color name="bg_yellow">#F6F0D8</color>
+    <color name="bg_yellow_dark">#CDCF77</color>
+    <color name="bg_blue">#E6F2FE</color>
+    <color name="bg_blue_dark">#70B0BD</color>
+    <color name="bg_purple">#E5DEF0</color>
+
+    <color name="c">#F8FCFF</color>
+    <color name="cd">#E7EEF4</color>
+    <color name="ctd">#97A4AF</color>
+
 </resources>

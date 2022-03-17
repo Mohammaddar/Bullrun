@@ -4,18 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.bullrun.data.database.model.Asset
-import com.example.bullrun.data.database.model.Coin
-import com.example.bullrun.data.database.model.CoinList
-import com.example.bullrun.data.database.model.RemoteKeys
+import com.example.bullrun.data.database.model.*
 
-@Database(entities = [Coin::class, RemoteKeys::class, CoinList::class, Asset::class], version = 1, exportSchema = false)
+@Database(entities = [Coin::class, RemoteKeys::class, CoinList::class, Asset::class, Wallet::class,Transaction::class], version = 1, exportSchema = false)
 abstract class CoinDatabase : RoomDatabase() {
 
     abstract val coinDatabaseDao: CoinDatabaseDao
     abstract val remoteKeysDao: RemoteKeysDao
     abstract val CoinListDao: CoinListDao
     abstract val portfolioDao: PortfolioDao
+    abstract val walletDao: WalletDao
+    abstract val transactionDao: TransactionDao
 
     companion object {
 

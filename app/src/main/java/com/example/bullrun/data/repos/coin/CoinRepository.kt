@@ -10,6 +10,7 @@ import com.example.bullrun.data.database.CoinDatabase
 import com.example.bullrun.data.database.model.Coin
 import com.example.bullrun.data.remote.CoinService
 import drewcarlson.coingecko.models.coins.CoinFullData
+import drewcarlson.coingecko.models.coins.CoinMarkets
 import kotlinx.coroutines.flow.Flow
 
 class CoinRepository private constructor(context: Context) {
@@ -74,6 +75,15 @@ class CoinRepository private constructor(context: Context) {
             coinService.getCoinByID(coinID);
         } catch (e: Exception) {
             null
+        }
+    }
+
+    suspend fun getTopTenCoins():List<CoinMarkets>{
+        return try {
+            coinService.getCoins(query = "",page = 1,pageSize = 10)
+        } catch (e: Exception) {
+            Log.d("TAG", e.message.toString())
+            listOf<CoinMarkets>()
         }
     }
 

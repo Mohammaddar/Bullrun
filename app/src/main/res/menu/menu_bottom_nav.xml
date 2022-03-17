@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/fragmentMainList"
+        android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/home"
         android:title="Home" />
     <item
+        android:id="@+id/fragmentMainList"
         android:enabled="true"
         android:icon="@drawable/bar_chart"
         android:title="Coins" />
@@ -15,7 +16,7 @@
         android:icon="@drawable/portfolio"
         android:title="Portfolio" />
     <item
-        android:id="@+id/walletFragment"
+        android:id="@+id/exchangesFragment"
         android:enabled="true"
         android:icon="@drawable/exchange"
         android:title="exchanges" />

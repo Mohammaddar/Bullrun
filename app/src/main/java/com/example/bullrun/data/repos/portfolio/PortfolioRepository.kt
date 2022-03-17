@@ -7,6 +7,8 @@ import androidx.room.withTransaction
 import com.example.bullrun.App
 import com.example.bullrun.data.database.CoinDatabase
 import com.example.bullrun.data.database.model.Asset
+import com.example.bullrun.data.database.model.Transaction
+import com.example.bullrun.data.database.model.Wallet
 import com.example.bullrun.data.remote.CoinService
 import kotlinx.coroutines.flow.Flow
 
@@ -26,9 +28,6 @@ class PortfolioRepository private constructor(context: Context) {
     private val coinDataBase = CoinDatabase.getInstance(context)
     private val coinService = CoinService.getInstance()
 
-    suspend fun getAssetById(coinId: String): Asset? {
-        return coinDataBase.portfolioDao.getAssetById(coinId)
-    }
 
     suspend fun buyAsset(
         coinId: String,
@@ -37,34 +36,67 @@ class PortfolioRepository private constructor(context: Context) {
         symbol: String,
         currentPrice: Double,
         price: Double,
-        volume: Double
+        volume: Double,
+        walletName: String
     ) {
-        val dao = coinDataBase.portfolioDao
-        if (dao.isAssetExisted(coinId) == 1) {
-            dao.buyAsset(coinId, volume, volume * price)
-        } else {
-            dao.addAsset(
-                Asset(
-                    coinId = coinId,
-                    coinName = coinName,
-                    image = image,
-                    symbol = symbol,
-                    currentPrice = currentPrice,
-                    totalBuyingVolume = volume,
-                    totalSellingVolume = 0.0,
-                    totalBuyingCost = price * volume,
-                    totalSellingIncome = 0.0
+        val portfolioDao = coinDataBase.portfolioDao
+        coinDataBase.withTransaction {
+            try {
+                if (portfolioDao.isAssetExisted(coinId, walletName) == 1) {
+                    portfolioDao.buyAsset(coinId, volume, volume * price, walletName)
+                } else {
+                    portfolioDao.addAsset(
+                        Asset(
+                            coinId = coinId,
+                            coinName = coinName,
+                            image = image,
+                            symbol = symbol,
+                            currentPrice = currentPrice,
+                            totalBuyingVolume = volume,
+                            totalSellingVolume = 0.0,
+                            totalBuyingCost = price * volume,
+                            totalSellingIncome = 0.0,
+                            walletName = walletName
+                        )
+                    )
+                }
+                coinDataBase.transactionDao.addTransaction(
+                    Transaction(
+                        type = "Buy",
+                        coinId = coinId,
+                        volume = volume,
+                        price = price,
+                        walletName = walletName,
+                        dateMillis = System.currentTimeMillis()
+                    )
                 )
-            )
+            } catch (e: java.lang.Exception) {
+                Toast.makeText(
+                    App.applicationContext(),
+                    "Error occured message is ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
-    suspend fun sellAsset(coinId: String, volume: Double, price: Double) {
-        coinDataBase.portfolioDao.sellAsset(coinId, volume, volume * price)
+    suspend fun sellAsset(coinId: String, volume: Double, price: Double, walletName: String) {
+        coinDataBase.portfolioDao.sellAsset(coinId, volume, volume * price, walletName)
+
+        coinDataBase.transactionDao.addTransaction(
+            Transaction(
+                type = "Sell",
+                coinId = coinId,
+                volume = volume,
+                price = price,
+                walletName = walletName,
+                dateMillis = System.currentTimeMillis()
+            )
+        )
     }
 
-    fun getAllAssets(): Flow<List<Asset>> {
-        return coinDataBase.portfolioDao.getAll()
+    fun getAllAssetsInWallet(walletName: String): Flow<List<Asset>> {
+        return coinDataBase.portfolioDao.getAllAssetsInWallet(walletName)
     }
 
     suspend fun updateAssetsInfo(ids: List<String>) {
@@ -82,6 +114,26 @@ class PortfolioRepository private constructor(context: Context) {
                 }
             }
 
+        } catch (e: Exception) {
+            Toast.makeText(
+                App.applicationContext(),
+                "Error occured message is ${e.message}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    suspend fun addNewWallet(wallet: Wallet) {
+        coinDataBase.walletDao.addWallet(wallet)
+    }
+
+    fun getAllWallets(): Flow<List<Wallet>> {
+        return coinDataBase.walletDao.getAll()
+    }
+
+    fun tryOrCatch(action: () -> Unit) {
+        try {
+            action()
         } catch (e: Exception) {
             Toast.makeText(
                 App.applicationContext(),

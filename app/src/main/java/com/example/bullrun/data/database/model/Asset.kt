@@ -9,7 +9,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "portfolio_table")
 data class Asset(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
+    var id: Int=0,
+
+    @ColumnInfo(name = "coinId")
     var coinId: String,
 
     @ColumnInfo(name = "name")
@@ -34,6 +37,9 @@ data class Asset(
     val totalBuyingCost: Double = 0.0,
 
     @ColumnInfo(name = "total_selling_income")
-    val totalSellingIncome: Double = 0.0
+    val totalSellingIncome: Double = 0.0,
+
+    @ColumnInfo(name = "walletName")
+    val walletName: String
 
 ) : Parcelable

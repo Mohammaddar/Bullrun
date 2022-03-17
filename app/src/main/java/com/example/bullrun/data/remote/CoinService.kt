@@ -42,4 +42,5 @@ class CoinService {
         ids.forEach { idsStr.plus("$it,") }
         return coinGecko.getCoinMarkets(vsCurrency = "usd",ids=idsStr).markets
     }
+
 }

@@ -11,8 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.mainList.MainListFragment">
+        android:layout_height="match_parent">
 
 
         <EditText
@@ -41,6 +40,18 @@
             app:layout_constraintStart_toStartOf="@+id/edt_buying_price"
             app:layout_constraintTop_toTopOf="@+id/textView3" />
 
+        <EditText
+            android:id="@+id/edt_wallet_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/buying_amount"
+            android:ems="10"
+            android:layout_marginTop="16dp"
+            android:inputType="textPersonName"
+            android:text="@string/_0_00"
+            app:layout_constraintStart_toStartOf="@+id/edt_buying_amount"
+            app:layout_constraintTop_toBottomOf="@+id/edt_buying_amount" />
+
         <Button
             android:id="@+id/btn_buy"
             android:layout_width="wrap_content"
@@ -48,8 +59,8 @@
             android:layout_marginTop="32dp"
             android:text="@string/buy"
             android:backgroundTint="#0AC58F"
-            app:layout_constraintStart_toStartOf="@+id/edt_buying_amount"
-            app:layout_constraintTop_toBottomOf="@+id/edt_buying_amount"
+            app:layout_constraintStart_toStartOf="@+id/edt_wallet_name"
+            app:layout_constraintTop_toBottomOf="@+id/edt_wallet_name"
             />
 
         <Button
