@@ -190,8 +190,7 @@
                             style="@style/timeFrameSelectionToggleButton"
                             android:layout_width="36dp"
                             android:layout_height="wrap_content"
-                            android:text="1D"
-                            android:checked="true"/>
+                            android:text="@string/_1d"/>
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_1w"

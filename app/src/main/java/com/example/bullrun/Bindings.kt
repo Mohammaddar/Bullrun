@@ -1,10 +1,13 @@
 package com.example.bullrun
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.blue
 import androidx.core.graphics.drawable.toBitmap
@@ -17,6 +20,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -63,6 +67,15 @@ fun imageBitmap(view: ImageView, bitmap:Bitmap, context: Context) {
         .into(view)
 
 
+}
+
+@BindingAdapter("priceChangePercentage","context")
+fun setPriceChangeColor(view: MaterialCardView,changePercentage: Double,context: Context) {
+    if (changePercentage>=0.0){
+        view.setCardBackgroundColor(ContextCompat.getColor(context, R.color.gr))
+    }else{
+        view.setCardBackgroundColor(ContextCompat.getColor(context, R.color.re))
+    }
 }
 
 suspend fun imageUrl2(
@@ -128,6 +141,7 @@ suspend fun imageUrl2(
 }
 
 fun setColor(r: Int, g: Int, b: Int, view: ImageView, card: MaterialCardView, context: Context) {
+
     val colors = listOf<Triple<Int, Int, Int>>(
         Triple(222, 226, 230),
         Triple(183, 228, 199),
@@ -155,4 +169,5 @@ fun setColor(r: Int, g: Int, b: Int, view: ImageView, card: MaterialCardView, co
         3 -> card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.bg_yellow))
         4 -> card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.bg_blue))
     }
+
 }

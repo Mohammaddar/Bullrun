@@ -20,6 +20,9 @@ interface PortfolioDao {
     @Query("SELECT * FROM portfolio_table WHERE walletName=:walletName")
     fun getAllAssetsInWallet(walletName: String): Flow<List<Asset>>
 
+    @Query("SELECT coinId FROM portfolio_table WHERE walletName=:walletName")
+    suspend fun getAllAssetsIDsInWallet(walletName: String): List<String>
+
     @Query("UPDATE portfolio_table SET current_price=:currentPrice WHERE coinId=:coinId;")
     suspend fun updateCurrentPrice(coinId: String, currentPrice: Double)
 

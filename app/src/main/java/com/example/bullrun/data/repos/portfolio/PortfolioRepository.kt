@@ -10,6 +10,7 @@ import com.example.bullrun.data.database.model.Asset
 import com.example.bullrun.data.database.model.Transaction
 import com.example.bullrun.data.database.model.Wallet
 import com.example.bullrun.data.remote.CoinService
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 
 class PortfolioRepository private constructor(context: Context) {
@@ -99,11 +100,16 @@ class PortfolioRepository private constructor(context: Context) {
         return coinDataBase.portfolioDao.getAllAssetsInWallet(walletName)
     }
 
+
+    suspend fun getAllAssetsIDsInWallet(walletName: String): List<String> {
+        return coinDataBase.portfolioDao.getAllAssetsIDsInWallet(walletName)
+    }
+
     suspend fun updateAssetsInfo(ids: List<String>) {
         try {
             val assets = coinService.getCoinsByIDs(ids)
             coinDataBase.withTransaction {
-                Log.d("TAGP", "thread10: ${Thread.currentThread().name}")
+                Log.d("TAGP", "updateAssetsInfo: ${Thread.currentThread().name}")
                 assets.forEach {
                     it.id?.let { it1 ->
                         coinDataBase.portfolioDao.updateCurrentPrice(
@@ -113,7 +119,7 @@ class PortfolioRepository private constructor(context: Context) {
                     }
                 }
             }
-
+            Log.d("TAGP", "updateAssetsInfo finish: ${Thread.currentThread().name}")
         } catch (e: Exception) {
             Toast.makeText(
                 App.applicationContext(),
@@ -129,6 +135,10 @@ class PortfolioRepository private constructor(context: Context) {
 
     fun getAllWallets(): Flow<List<Wallet>> {
         return coinDataBase.walletDao.getAll()
+    }
+
+    suspend fun getTransactionsByAssetAndWallet(assetName:String,walletName:String):List<Transaction>{
+        return coinDataBase.transactionDao.getTransactionByAssetAndWallet(assetName,walletName)
     }
 
     fun tryOrCatch(action: () -> Unit) {

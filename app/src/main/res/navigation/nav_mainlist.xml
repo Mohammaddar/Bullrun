@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_mainlist"
+    app:startDestination="@+id/mainListFragment">
+
+    <fragment
+        android:id="@+id/mainListFragment"
+        android:name="com.example.bullrun.ui.fragments.mainList.MainListFragment"
+        android:label="MainListFragment">
+        <action
+            android:id="@+id/action_mainListFragment_to_searchListFragment"
+            app:destination="@id/searchListFragment" />
+        <action
+            android:id="@+id/action_mainListFragment_to_coinInfoFragment"
+            app:destination="@id/coinInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchListFragment"
+        android:name="com.example.bullrun.ui.fragments.searchList.SearchListFragment"
+        android:label="SearchListFragment" />
+    <fragment
+        android:id="@+id/coinInfoFragment"
+        android:name="com.example.bullrun.ui.fragments.coinInfo.CoinInfoFragment"
+        android:label="CoinInfoFragment">
+        <action
+            android:id="@+id/action_coinInfoFragment_to_transactionFragment"
+            app:destination="@id/transactionFragment" />
+        <argument
+            android:name="coin"
+            app:argType="com.example.bullrun.data.database.model.Coin" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.example.bullrun.ui.fragments.transaction.TransactionFragment"
+        android:label="TransactionFragment">
+        <argument
+            android:name="coin"
+            app:argType="com.example.bullrun.data.database.model.Coin" />
+    </fragment>
+</navigation>

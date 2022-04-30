@@ -21,7 +21,12 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
 
     var coin = coinId.switchMap {
         liveData {
-            coinRepository.getCoinInfoByID(it)?.let { it1 -> emit(it1) }
+            coinRepository.getCoinInfoByID(it,
+                tickers = false,
+                communityData = false,
+                developerData = false,
+                sparkline = false
+            )?.let { it1 -> emit(it1) }
         }
     }
 

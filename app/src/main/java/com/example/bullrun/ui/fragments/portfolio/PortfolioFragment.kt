@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bullrun.databinding.FragmentPortfolioBinding
+import com.example.bullrun.ui.MainActivity
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -37,6 +38,7 @@ class PortfolioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).viewModel.bottomNavigationState.value="VISIBLE"
 
         setupRecyclerWallets()
 
@@ -85,7 +87,7 @@ class PortfolioFragment : Fragment() {
     private fun setupRecyclerWallets() {
         val walletAdapter = WalletListAdapter(requireNotNull(context)) {
             findNavController().navigate(
-                PortfolioFragmentDirections.actionPortfolioFragmentToWalletActivity(
+                PortfolioFragmentDirections.actionPortfolioFragment2ToWalletActivity(
                     it.walletName
                 )
             )

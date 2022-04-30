@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_portfolio"
+    app:startDestination="@id/portfolioFragment">
+
+    <fragment
+        android:id="@+id/portfolioFragment"
+        android:name="com.example.bullrun.ui.fragments.portfolio.PortfolioFragment"
+        android:label="PortfolioFragment" >
+        <action
+            android:id="@+id/action_portfolioFragment2_to_walletActivity"
+            app:destination="@id/walletActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/walletActivity"
+        android:name="com.example.bullrun.ui.activitywallet.WalletActivity"
+        android:label="WalletActivity" >
+        <argument
+            android:name="walletName"
+            app:argType="string" />
+    </activity>
+</navigation>

@@ -73,15 +73,18 @@ class CoinsRemoteMediator(
             }
         }
         //val apiQuery = query + IN_QUALIFIER
-
+        Log.d("TAGT", "load1 : ${Thread.currentThread().name}")
         try {
             var coins = coinService.getCoins(query, page, state.config.pageSize)
             Log.d("TAG", "${coins.count()}")
-            coins = coins.sortedBy { it.marketCapRank }
+            coins = coins.sortedBy {
+                Log.d("TAGT", "load5 : ${Thread.currentThread().name}")
+                it.marketCapRank }
 
             val endOfPaginationReached = coins.isEmpty()
             coinDatabase.withTransaction {
                 // clear all tables in the database
+                Log.d("TAGT", "load2 : ${Thread.currentThread().name}")
                 if (loadType == LoadType.REFRESH) {
                     coinDatabase.remoteKeysDao.clearRemoteKeys()
                     coinDatabase.coinDatabaseDao.clearAll()

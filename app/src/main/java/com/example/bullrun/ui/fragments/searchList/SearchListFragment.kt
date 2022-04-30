@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bullrun.databinding.FragmentSearchListBinding
+import com.example.bullrun.ui.MainActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -41,6 +42,8 @@ class SearchListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as MainActivity).viewModel.bottomNavigationState.value="VISIBLE"
 
         val adapter = SearchListAdapter()
         binding.recyclerSearch.apply {

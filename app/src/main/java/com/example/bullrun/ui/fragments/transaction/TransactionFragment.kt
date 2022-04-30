@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.bullrun.databinding.FragmentTransactionBinding
+import com.example.bullrun.ui.MainActivity
 import com.example.bullrun.ui.fragments.coinInfo.CoinInfoFragmentArgs
 
 class TransactionFragment : Fragment() {
@@ -36,6 +37,8 @@ class TransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.coinId.value = args.coin.coinId
+
+        (activity as MainActivity).viewModel.bottomNavigationState.value="VISIBLE"
 
         viewModel.coin.observe(viewLifecycleOwner) {
             if (it != null)

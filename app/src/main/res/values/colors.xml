@@ -20,7 +20,7 @@
     <color name="gray_800">#595858</color>
     <color name="gray_900">#505050</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="background">#FFFFFF</color>
+    <color name="background">#F2F2F2</color>
     <color name="background_shade2">#E9E8EA</color>
     <color name="background_shade3">#F6F5F5</color>
     <color name="background_shade4">#EFEFEF</color>
@@ -41,6 +41,9 @@
     <color name="bg_blue">#E6F2FE</color>
     <color name="bg_blue_dark">#70B0BD</color>
     <color name="bg_purple">#E5DEF0</color>
+    <color name="bg_red">#FF9EA4</color>
+    <color name="gr">#6DECDD</color>
+    <color name="re">#FF9799</color>
 
     <color name="c">#F8FCFF</color>
     <color name="cd">#E7EEF4</color>

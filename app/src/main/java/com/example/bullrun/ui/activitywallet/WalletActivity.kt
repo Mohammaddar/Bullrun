@@ -1,6 +1,7 @@
 package com.example.bullrun.ui.activitywallet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -10,9 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.bullrun.R
 import com.example.bullrun.databinding.ActivityWalletBinding
 import com.example.bullrun.setupLineChart
-import com.example.bullrun.ui.fragments.coinInfo.CoinInfoFragmentArgs
 import com.example.bullrun.ui.model.AssetItem
 import com.example.bullrun.ui.model.EmptyUI
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -38,10 +40,79 @@ class WalletActivity : AppCompatActivity() {
             WalletActivityViewModelFactory(application)
         ).get(WalletViewModel::class.java)
 
-        viewModel.walletName.value=args.walletName
+        viewModel.walletName.value = args.walletName
         setupRecyclerAssets()
-        setupBarChart()
 
+        setupMainChartLAF(binding.lineChart)
+
+
+//        lifecycleScope.launch {
+//            viewModel.timeFrame.collectLatest {
+//                viewModel.chartsDataset[it]?.let { it1 -> setupBarChart(it,it1) }
+//            }
+//        }
+
+        viewModel.med.observe(this) {
+            Log.d("TAGDE", "change")
+            viewModel.timeFrame.value?.let { tf ->
+                viewModel.chartsDataset.value?.let { dataset ->
+                    dataset[tf]?.let { data ->
+                        Log.d("TAGDE", "setupBarChart call $data")
+                        setupBarChart(tf, data)
+                    }
+                }
+            }
+        }
+
+        binding.toggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.btn_1d -> {
+                        Log.d("TAGDE", "tf 1d")
+                        viewModel.timeFrame.value="1D"
+                    }
+                    R.id.btn_1w -> {
+                        Log.d("TAGDE", "tf 1w")
+                        viewModel.timeFrame.value="1W"
+                    }
+                    R.id.btn_1m -> {
+                        Log.d("TAGDE", "tf 1m")
+                        viewModel.timeFrame.value="1M"
+                    }
+                    R.id.btn_3m -> {
+                        Log.d("TAGDE", "tf 3m")
+                        viewModel.timeFrame.value="3M"
+                    }
+                }
+            }
+        }
+        binding.toggleGroup.check(R.id.btn_1d)
+
+        viewModel.timeFrame.observe(this){
+            Log.d("TAGDE","tf changed $it")
+        }
+
+    }
+
+    private fun setupMainChartLAF(chart:LineChart) {
+        //setupMainChartLookAndFeel
+        chart.run {
+            setDrawBorders(false)
+            setDrawGridBackground(false)
+            description.isEnabled = false
+            isDoubleTapToZoomEnabled = false
+            xAxis.isEnabled = true
+            xAxis.setDrawGridLines(false)
+            xAxis.position = XAxis.XAxisPosition.BOTTOM_INSIDE
+            axisLeft.isEnabled = false
+            axisRight.isEnabled = false
+            legend.isEnabled = false
+            setPinchZoom(false)
+            setTouchEnabled(true)
+            isDragEnabled = true
+            setScaleEnabled(false)
+            setViewPortOffsets(0f, 0f, 0f, 0f)
+        }
     }
 
 
@@ -68,40 +139,32 @@ class WalletActivity : AppCompatActivity() {
     }
 
 
-    private fun setupBarChart() {
+    private fun setupBarChart(timeFrame: String, prices: List<Double>) {
+        Log.d("TAGDE", "setupBarChart start")
         val values = mutableListOf<Entry>()
-        values.run {
-            add(Entry(0f, 100f))
-            add(Entry(1f, 104f))
-            add(Entry(2f, 110f))
-            add(Entry(3f, 108f))
-            add(Entry(4f, 124f))
-            add(Entry(5f, 128f))
-            add(Entry(6f, 120f))
-            add(Entry(7f, 118f))
-            add(Entry(8f, 121f))
-            add(Entry(9f, 114f))
-            add(Entry(10f, 112f))
-            add(Entry(11f, 111f))
-            add(Entry(12f, 108f))
-            add(Entry(13f, 112f))
-            add(Entry(14f, 114f))
-            add(Entry(15f, 115f))
-            add(Entry(16f, 111f))
-            add(Entry(17f, 108f))
-            add(Entry(18f, 107f))
-            add(Entry(19f, 108f))
-            add(Entry(20f, 105f))
-            add(Entry(21f, 107f))
-            add(Entry(22f, 106f))
-            add(Entry(23f, 104f))
-            add(Entry(24f, 106f))
-            add(Entry(25f, 107f))
-            add(Entry(26f, 109f))
-            add(Entry(27f, 105f))
-            add(Entry(28f, 104f))
-            add(Entry(29f, 106f))
+        when (timeFrame) {
+            "1D" -> {
+                repeat(24) {
+                    values.add(Entry((it + 1).toFloat(), prices[prices.size - it - 1].toFloat()))
+                }
+            }
+            "1W" -> {
+                repeat(28) {
+                    values.add(Entry((it + 1).toFloat(), prices[prices.size - it - 1].toFloat()))
+                }
+            }
+            "1M" -> {
+                repeat(30) {
+                    values.add(Entry((it + 1).toFloat(), prices[prices.size - it - 1].toFloat()))
+                }
+            }
+            "3M" -> {
+                repeat(30) {
+                    values.add(Entry((it + 1).toFloat(), prices[prices.size - it - 1].toFloat()))
+                }
+            }
         }
-        setupLineChart(this, binding.lineChart, values)
+        Log.d("TAGDE", "setupBarChart finish")
+        setupLineChart(this, binding.lineChart, values,timeFrame)
     }
 }

@@ -43,4 +43,10 @@
     <string name="_3m">3M</string>
     <string name="all">All</string>
     <string name="_1w">1W</string>
+    <string name="_1d">1D</string>
+    <string name="top_gainers">Top Gainers</string>
+    <string name="based_on_top_250_coins">Based on top 250 coins</string>
+    <string name="trending">Trending</string>
+    <string name="top_losers">Top Losers</string>
+    <string name="all_time_high">All Time High</string>
 </resources>

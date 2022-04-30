@@ -34,25 +34,27 @@ class MainListVH private constructor(private val binding: MainListItemBinding) :
         binding.context = context
         binding.holder = this
         binding.executePendingBindings()
-        when {
-            coin.priceChangePercentage24h > 0 -> binding.txt24hchange.setTextColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.green
+        coin.priceChangePercentage24h?.let {
+            when {
+                coin.priceChangePercentage24h > 0 -> binding.txt24hchange.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.green
+                    )
                 )
-            )
-            coin.priceChangePercentage24h == 0.0 -> binding.txt24hchange.setTextColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.gray_500
+                coin.priceChangePercentage24h == 0.0 -> binding.txt24hchange.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.gray_500
+                    )
                 )
-            )
-            coin.priceChangePercentage24h < 0 -> binding.txt24hchange.setTextColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.red
+                coin.priceChangePercentage24h < 0 -> binding.txt24hchange.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.red
+                    )
                 )
-            )
+            }
         }
     }
 

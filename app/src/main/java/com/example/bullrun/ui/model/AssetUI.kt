@@ -12,6 +12,7 @@ import androidx.core.graphics.red
 import com.bumptech.glide.Glide
 import com.example.bullrun.R
 import com.example.bullrun.data.database.model.Asset
+import com.example.bullrun.decimalCount
 import com.github.mikephil.charting.data.Entry
 import com.google.android.material.card.MaterialCardView
 import java.math.BigDecimal
@@ -38,30 +39,30 @@ data class AssetUI(
     private val _totalSellingVolume = totalSellingVolume
 
     private val _netHoldingVolume: Double = _totalBuyingVolume - _totalSellingVolume
-    val netHoldingVolume: Double = formatDecimal(_netHoldingVolume, 7)
+    val netHoldingVolume: Double = _netHoldingVolume.decimalCount(7)
 
     private val _totalHoldingValue = _netHoldingVolume * currentPrice
-    val totalHoldingValue: Double = formatDecimal(_totalHoldingValue, 2)
+    val totalHoldingValue: Double = _totalHoldingValue.decimalCount(2)
 
     private val _netCost = totalBuyingCost - totalSellingIncome
-    val netCost: Double = formatDecimal(_netCost, 2)
+    val netCost: Double = _netCost.decimalCount(2)
 
     private val _avgEntry = _netCost / _netHoldingVolume
-    val avgEntry: Double = formatDecimal(_avgEntry, 2)
+    val avgEntry: Double = _avgEntry.decimalCount(2)
 
     private val _pnlValue = (currentPrice - _avgEntry) * _netHoldingVolume
-    val pnlValue: Double = formatDecimal(_pnlValue, 2)
+    val pnlValue: Double = _pnlValue.decimalCount(2)
 
     private val _pnlPercentage = _pnlValue / totalBuyingCost
-    val pnlPercentage: Double = formatDecimal(_pnlPercentage, 2)
+    val pnlPercentage: Double = _pnlPercentage.decimalCount(2)
 
     //
     var visibility: Boolean = false
 
 
     init {
-        totalBuyingVolume = formatDecimal(_totalBuyingVolume, 7)
-        totalSellingVolume = formatDecimal(_totalSellingVolume, 7)
+        totalBuyingVolume = _totalBuyingVolume.decimalCount(7)
+        totalSellingVolume = _totalSellingVolume.decimalCount(7)
     }
 
 
@@ -166,10 +167,6 @@ data class AssetUI(
 //            Log.d("TAGI", "${coinName} 4 : ${Thread.currentThread().name}")
             return "$r,$g,$b"
         }
-    }
-
-    private fun formatDecimal(value: Double, decimalCount: Int): Double {
-        return BigDecimal(value).setScale(decimalCount, RoundingMode.HALF_EVEN).toDouble()
     }
 
 

@@ -22,10 +22,10 @@ data class Coin(
     val coinSymbol: String? = null,
 
     @ColumnInfo(name = "price_change_percentage_24h")
-    val priceChangePercentage24h: Double = 0.0,
+    val priceChangePercentage24h: Double? = 0.0,
 
     @ColumnInfo(name = "current_price")
-    val currentPrice: Double = 0.0,
+    val currentPrice: Double? = 0.0,
 
     @ColumnInfo(name = "image")
     val image: String? = null,
