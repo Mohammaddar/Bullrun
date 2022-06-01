@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bullrun.databinding.TrendingCoinItemBinding
 import com.example.bullrun.ui.model.TrendingCoin
 
-class TrendingAdapter(val context: Context,val itemWidth:Int,private val onClick: (trendingCoin: TrendingCoin) -> Unit) :
+class TrendingAdapter(val context: Context,private val onClick: (trendingCoin: TrendingCoin) -> Unit) :
     ListAdapter<TrendingCoin, TrendingCoinVH>(TrendingCoinDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingCoinVH {
@@ -17,7 +17,7 @@ class TrendingAdapter(val context: Context,val itemWidth:Int,private val onClick
     }
 
     override fun onBindViewHolder(holder: TrendingCoinVH, position: Int) {
-        getItem(position)?.let { holder.bind(it,context,itemWidth,position,onClick) }
+        getItem(position)?.let { holder.bind(it,context,position,onClick) }
     }
 }
 
@@ -25,7 +25,7 @@ class TrendingCoinVH private constructor(private val binding: TrendingCoinItemBi
     RecyclerView.ViewHolder(binding.root) {
 
     lateinit var onClick: (trendingCoin: TrendingCoin) -> Unit
-    fun bind(trendingCoin: TrendingCoin, context: Context,itemWidth: Int ,position: Int,onClick: (trendingCoin: TrendingCoin) -> Unit) {
+    fun bind(trendingCoin: TrendingCoin, context: Context ,position: Int,onClick: (trendingCoin: TrendingCoin) -> Unit) {
         binding.trendingCoin=trendingCoin
     }
 

@@ -42,11 +42,11 @@ class PortfolioFragment : Fragment() {
 
         setupRecyclerWallets()
 
-        binding.btnNewWallet.setOnClickListener {
-            lifecycleScope.launch {
-                viewModel.addWallet("Wallet ${Random.nextInt(0, 100)}")
-            }
-        }
+//        binding.btnNewWallet.setOnClickListener {
+//            lifecycleScope.launch {
+//                viewModel.addWallet("Wallet ${Random.nextInt(0, 100)}")
+//            }
+//        }
 
         /////////////////////////////////////////////////////
         /////////////////////////////////////////////////////
@@ -93,11 +93,11 @@ class PortfolioFragment : Fragment() {
             )
             //TODO
         }
-        binding.recyclerWallets.adapter = walletAdapter
-        binding.recyclerWallets.layoutManager = LinearLayoutManager(activity)
-        viewModel.walletList.observe(viewLifecycleOwner) {
-            walletAdapter.submitList(it)
-        }
+//        binding.recyclerWallets.adapter = walletAdapter
+//        binding.recyclerWallets.layoutManager = LinearLayoutManager(activity)
+//        viewModel.walletList.observe(viewLifecycleOwner) {
+//            walletAdapter.submitList(it)
+//        }
     }
 
 

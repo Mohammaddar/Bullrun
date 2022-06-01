@@ -204,7 +204,7 @@
                 android:layout_marginBottom="16dp"
                 android:text="@string/add_transaction"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_chart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -218,7 +218,7 @@
             app:behavior_peekHeight="60dp"
             tools:behavior_peekHeight="650dp"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-            app:shapeAppearance="@style/ExpandingBottomSheetDialogShape">
+            app:shapeAppearance="@style/BottomSheetDialogShape">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"

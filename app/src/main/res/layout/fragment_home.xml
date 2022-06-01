@@ -14,1462 +14,1150 @@
             type="com.example.bullrun.ui.model.GlobalDataUI" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".ui.fragments.home.HomeFragment">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_toolbar"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="56dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="141dp" />
-
-            <TextView
-                android:id="@+id/txt_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="66dp"
-                android:text="@string/Bullrun"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/btn_open_search_page"
-                style="@style/circleImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/search"
-                app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_total"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:backgroundTint="@color/primary"
-                android:elevation="0dp"
-                app:layout_constraintEnd_toEndOf="@id/guideline20"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guideline_toolbar">
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="Total"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text='@{globalDataUi.totalMarketCap.toString()+"T $"}'
-                        android:textColor="@color/gray_100"
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="1.657T $" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_Dominance"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="6dp"
-                android:elevation="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/guideline20"
-                app:layout_constraintTop_toBottomOf="@id/guideline_toolbar">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline21"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.5" />
+                        android:id="@+id/guideline_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="56dp" />
 
                     <TextView
+                        android:id="@+id/txt_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="BTC.D"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="66dp"
+                        android:text="@string/Bullrun"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/txt_btc_d"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text='@{globalDataUi.dominanceBtc.toString()+" %"}'
-                        android:textColor="@color/black_light"
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@id/guideline21"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="1.657T $" />
-
-                    <TextView
-                        android:id="@+id/txt_eth_d"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="ETH.D"
-                        android:textColor="@color/black_light"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/guideline21"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/btn_open_search_page"
+                        style="@style/circleImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text='@{globalDataUi.dominanceEth.toString()+" %"}'
-                        android:textColor="@color/black_light"
-                        android:textSize="13sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/search"
+                        app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.538"
-                        tools:text="1.657T $" />
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="72dp"
+                        android:text="Market is down 0.8 %"
+                        android:textColor="@color/black_100"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_title"
+                        tools:text="Market is down 0.8 %" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
-                android:id="@+id/linear_topten"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_total">
-
-                <androidx.constraintlayout.motion.widget.MotionLayout
-                    android:id="@+id/motion_l"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_top_coins"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutDescription="@xml/wallet_fragment">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/gray_500"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/constraint1">
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline5"
+                        android:id="@+id/guideline65"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="-0.8" />
+                        app:layout_constraintGuide_percent="0.65" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline6"
+                        android:id="@+id/guideline35"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.1" />
+                        app:layout_constraintGuide_percent="0.35" />
 
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.9" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="1.8" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/l1"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card1"
+                        style="@style/topCoinCard"
                         android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/guideline7"
+                        android:layout_height="180dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="3dp"
+                        app:layout_constraintEnd_toEndOf="@id/guideline65"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.65" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.65" />
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier1"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
 
-                        <com.google.android.material.card.MaterialCardView
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginEnd="3dp"
-                            android:layout_marginBottom="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="@id/guideline2"
-                            app:layout_constraintEnd_toEndOf="@id/guideline1"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginBottom="1dp"
+                                android:text="@{viewModel.topTenCoinsList.get(0).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier1"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier1"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier1"
+                                tools:text="BTC" />
 
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(0).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier1"
+                                tools:text="-5.24%" />
 
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank1"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_1"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt_current_price_top_coin1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(0).currentPrice)}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier1"
+                                tools:text="$ 47860.54" />
 
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(0).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank1"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank1"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank1"
-                                    tools:text="BTC" />
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(0).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(0).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank1"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank1"
-                                    tools:text="-5.24%" />
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/line_chart_top_coin1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_margin="8dp"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintBottom_toTopOf="@+id/img_logo_1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txt_current_price_top_coin1" />
 
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_current_price_top_coin"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(0).currentPrice)}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank1"
-                                    tools:text="$ 47860.54" />
+                            <ImageView
+                                android:id="@+id/img_logo_1"
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(0).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(0).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
+                    </com.google.android.material.card.MaterialCardView>
 
-                                <com.github.mikephil.charting.charts.LineChart
-                                    android:id="@+id/line_chart_top_coin"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_margin="8dp"
-                                    android:layout_marginStart="8dp"
-                                    app:layout_constraintBottom_toTopOf="@+id/img_logo_1"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/txt_current_price_top_coin" />
-
-                                <ImageView
-                                    android:id="@+id/img_logo_1"
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(0).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginEnd="3dp"
-                            android:layout_marginBottom="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@id/guideline1"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/guideline2">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank2"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_2"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(1).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank2"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank2"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank2"
-                                    tools:text="ETH" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(1).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank2"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank2"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(1).currentPrice)}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank2"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(1).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Ethereum" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(1).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-
-                            android:layout_height="0dp"
-                            android:layout_margin="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="@id/guideline2"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@id/guideline1"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank3"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_3"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(2).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank3"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank3"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank3"
-                                    tools:text="BTC" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(2).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="@id/txt_current_price3"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_current_price3"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_current_price3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(2).currentPrice)}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank3"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(2).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(2).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_margin="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@id/guideline1"
-                            app:layout_constraintTop_toTopOf="@id/guideline2">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank4"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_4"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(3).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank4"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank4"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank4"
-                                    tools:text="DOT" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(3).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank4"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank4"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(3).currentPrice)}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank4"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(3).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(3).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/l2"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card2"
+                        style="@style/topCoinCard"
                         android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@id/guideline8"
-                        app:layout_constraintStart_toEndOf="@+id/guideline7"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_height="180dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideline65"
+                        app:layout_constraintTop_toTopOf="@id/card1">
 
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline11"
-                            android:layout_width="wrap_content"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier2"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(1).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier2"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier2"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier2"
+                                tools:text="ETH" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(1).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier2"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(1).currentPrice)}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier2"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(1).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Ethereum" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(1).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card3"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="3dp"
+                        app:layout_constraintEnd_toEndOf="@id/guideline65"
+                        app:layout_constraintStart_toStartOf="@id/card1"
+                        app:layout_constraintTop_toBottomOf="@id/card1">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier3"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(2).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(2).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier3"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier3"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier3"
+                                tools:text="BTC" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(2).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier3"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt_current_price3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(2).currentPrice)}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier3"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(2).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(2).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card4"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="6dp"
+                        app:layout_constraintEnd_toEndOf="@id/card2"
+                        app:layout_constraintStart_toStartOf="@id/guideline65"
+                        app:layout_constraintTop_toBottomOf="@id/card2">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier4"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(3).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(3).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier4"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier4"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier4"
+                                tools:text="DOT" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(3).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier4"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier4"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(3).currentPrice)}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier4"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(3).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(3).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card5"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="3dp"
+                        app:layout_constraintEnd_toEndOf="@id/guideline35"
+                        app:layout_constraintStart_toStartOf="@id/card1"
+                        app:layout_constraintTop_toBottomOf="@id/card3">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier5"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(4).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(4).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier5"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier5"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier5"
+                                tools:text="BTC" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(4).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier5"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(4).currentPrice)}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier5"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(4).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(4).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card6"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="6dp"
+                        app:layout_constraintEnd_toEndOf="@id/card2"
+                        app:layout_constraintStart_toStartOf="@id/guideline35"
+                        app:layout_constraintTop_toBottomOf="@id/card4">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier6"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(2).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(5).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier6"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier6"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier6"
+                                tools:text="BTC" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(5).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier6"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier6"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt_current_price6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(5).currentPrice)}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier6"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(5).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(5).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card7"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="3dp"
+                        app:layout_constraintEnd_toEndOf="@id/guideline35"
+                        app:layout_constraintStart_toStartOf="@id/card1"
+                        app:layout_constraintTop_toBottomOf="@id/card5">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier7"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(6).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(6).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier7"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier7"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier7"
+                                tools:text="BTC" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(6).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier7"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier7"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(6).currentPrice)+" $"}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier7"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(6).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(6).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card8"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="180dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="6dp"
+                        app:layout_constraintEnd_toEndOf="@id/card2"
+                        app:layout_constraintStart_toStartOf="@id/guideline35"
+                        app:layout_constraintTop_toBottomOf="@+id/card6">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier8"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(7).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(7).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier8"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier8"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier8"
+                                tools:text="BTC" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(7).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier8"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier8"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt_current_price_top_coin8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="16dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(7).currentPrice)+" $"}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier8"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(7).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/line_chart_top_coin8"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_margin="8dp"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintBottom_toTopOf="@+id/img_logo_8"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txt_current_price_top_coin8" />
+
+                            <ImageView
+                                android:id="@+id/img_logo_8"
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(7).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card9"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="3dp"
+                        app:layout_constraintEnd_toEndOf="@id/guideline65"
+                        app:layout_constraintStart_toStartOf="@id/card1"
+                        app:layout_constraintTop_toBottomOf="@id/card7">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier9"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(8).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(8).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier9"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier9"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier9"
+                                tools:text="BTC" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(8).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier9"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier9"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="6dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(8).currentPrice)+" $"}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier9"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(8).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(8).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card10"
+                        style="@style/topCoinCard"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="6dp"
+                        app:layout_constraintEnd_toEndOf="@id/card2"
+                        app:layout_constraintStart_toStartOf="@id/guideline65"
+                        app:layout_constraintTop_toBottomOf="@id/card8">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/trend_identifier10"
+                                context="@{context}"
+                                priceChangePercentage="@{viewModel.topTenCoinsList.get(9).priceChangePercentage24h}"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="24dp"
+                                app:cardCornerRadius="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:backgroundTint="@color/gr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:text="@{viewModel.topTenCoinsList.get(9).symbol.toUpperCase()}"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier10"
+                                app:layout_constraintStart_toEndOf="@id/trend_identifier10"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier10"
+                                tools:text="BTC" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(9).priceChangePercentage24h)+"%"}'
+                                android:textColor="@color/black_100"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/trend_identifier10"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/trend_identifier10"
+                                tools:text="-5.24%" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="6dp"
+                                android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(9).currentPrice)+" $"}'
+                                android:textColor="@color/gray_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/trend_identifier10"
+                                tools:text="$ 47860.54" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="6dp"
+                                android:text="@{viewModel.topTenCoinsList.get(9).name}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="10sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="Bitcoin" />
+
+                            <ImageView
+                                context="@{context}"
+                                imageUrl="@{viewModel.topTenCoinsList.get(9).image}"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/transparent"
+                    android:text="@string/see_more"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black_100"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:cornerRadius="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/constraint_top_coins"
+                    app:strokeColor="@color/primary"
+                    app:strokeWidth="0dp" />
+
+                <ImageView
+                    android:id="@+id/img_lst_24h"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="64dp"
+                    android:src="@drawable/trend"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/constraint_top_coins" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12sp"
+                    android:text="Last 24 H"
+                    android:textColor="@color/black_100"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_lst_24h"
+                    app:layout_constraintStart_toEndOf="@id/img_lst_24h"
+                    app:layout_constraintTop_toTopOf="@id/img_lst_24h" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_lst_24h"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    app:shapeAppearance="@style/BottomSheetDialogShape"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_lst_24h">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tab_layout_lst_24h"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.6" />
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.67" />
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.3" />
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.35" />
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline14"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.69" />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/constraintLayout"
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_margin="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="@id/guideline13"
-                            app:layout_constraintEnd_toEndOf="@id/guideline11"
+                            android:layout_marginTop="20dp"
+                            android:textAllCaps="false"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tabGravity="start"
+                            app:tabIndicator="@drawable/tab_indicator"
+                            app:tabIndicatorColor="@color/bg_orange_too_dark"
+                            app:tabPaddingEnd="8dp"
+                            app:tabPaddingStart="8dp"
+                            app:tabRippleColor="@color/transparent"
+                            app:tabSelectedTextColor="@color/primary"
+                            app:tabTextAppearance="@style/tabLayoutTitleTextApp"
+                            app:tabTextColor="@color/gray_500"/>
 
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank5"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="#5"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(4).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank5"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank5"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank5"
-                                    tools:text="BTC" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(4).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank5"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank5"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(4).currentPrice)}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank5"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(4).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(4).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/constraintLayout4"
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/view_pager_lst_24h"
+                            android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_margin="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@id/guideline12"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/guideline13">
+                            android:layout_weight="1"
+                            android:layout_marginTop="18dp"/>
 
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank6"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_6"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(5).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank6"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank6"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank6"
-                                    tools:text="BTC" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(5).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="@id/txt_current_price6"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_current_price6"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_current_price6"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(5).currentPrice)}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank6"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(5).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(5).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginEnd="6dp"
-                            android:layout_marginBottom="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toTopOf="@+id/guideline13"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/guideline11"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank7"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_7"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(6).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank7"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank7"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank7"
-                                    tools:text="BTC" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(6).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank7"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank7"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(6).currentPrice)+" $"}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank7"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(6).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(6).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/constraintLayout5"
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginEnd="6dp"
-                            android:layout_marginBottom="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toTopOf="@+id/guideline14"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/guideline12"
-                            app:layout_constraintTop_toTopOf="@+id/guideline13">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank8"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_8"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(7).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank8"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank8"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank8"
-                                    tools:text="BTC" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(7).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank8"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank8"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="16dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(7).currentPrice)+" $"}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank8"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(7).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(7).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/constraintLayout2"
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_margin="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/guideline15"
-                            app:layout_constraintStart_toStartOf="@+id/guideline12"
-                            app:layout_constraintTop_toTopOf="@+id/guideline14">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank9"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_9"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(8).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank9"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank9"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank9"
-                                    tools:text="BTC" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(8).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:visibility="invisible"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank9"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank9"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="8dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(8).currentPrice)+" $"}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank9"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(8).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(8).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/constraintLayout3"
-                            context="@{context}"
-                            priceChangePercentage="@{viewModel.topTenCoinsList.get(0).priceChangePercentage24h}"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginEnd="6dp"
-                            android:layout_marginBottom="3dp"
-                            app:cardCornerRadius="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/guideline15"
-                            app:layout_constraintTop_toTopOf="@+id/guideline14">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:id="@+id/txt_rank10"
-                                    android:layout_width="28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="16dp"
-                                    android:background="@drawable/shape_txt_rank2"
-                                    android:gravity="center"
-                                    android:text="@string/_10"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(9).symbol.toUpperCase()}"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank10"
-                                    app:layout_constraintStart_toEndOf="@id/txt_rank10"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank10"
-                                    tools:text="BTC" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:text='@{String.format("%.2f",viewModel.topTenCoinsList.get(9).priceChangePercentage24h)+"%"}'
-                                    android:textColor="@color/black_100"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:visibility="invisible"
-                                    app:layout_constraintBottom_toBottomOf="@id/txt_rank10"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/txt_rank10"
-                                    tools:text="-5.24%" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="12dp"
-                                    android:layout_marginTop="8dp"
-                                    android:text='@{"$ "+String.valueOf(viewModel.topTenCoinsList.get(9).currentPrice)+" $"}'
-                                    android:textColor="@color/gray_900"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@id/txt_rank10"
-                                    tools:text="$ 47860.54" />
-
-                                <com.google.android.material.textview.MaterialTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:text="@{viewModel.topTenCoinsList.get(9).name}"
-                                    android:textColor="@color/black_100"
-                                    android:textSize="10sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:text="Bitcoin" />
-
-                                <ImageView
-                                    context="@{context}"
-                                    imageUrl="@{viewModel.topTenCoinsList.get(9).image}"
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_marginEnd="6dp"
-                                    android:layout_marginBottom="6dp"
-                                    android:contentDescription="@string/coin_logo"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    tools:srcCompat="@tools:sample/avatars" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </com.google.android.material.card.MaterialCardView>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </androidx.constraintlayout.motion.widget.MotionLayout>
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/img_top_gainers"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear_topten" />
-
-            <TextView
-                android:id="@+id/txt_top_gainers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/top_gainers"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/img_top_gainers"
-                app:layout_constraintStart_toEndOf="@id/img_top_gainers"
-                app:layout_constraintTop_toTopOf="@id/img_top_gainers" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/based_on_top_250_coins"
-                android:textColor="@color/gray_500"
-                android:textSize="11sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@id/txt_top_gainers"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_top_gainers" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_top_gainers"
-                android:layout_width="0dp"
-                android:layout_height="108dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_top_gainers" />
-
-            <ImageView
-                android:id="@+id/img_top_losers"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recycler_top_gainers" />
-
-            <TextView
-                android:id="@+id/txt_top_losers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/top_losers"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/img_top_losers"
-                app:layout_constraintStart_toEndOf="@id/img_top_losers"
-                app:layout_constraintTop_toTopOf="@id/img_top_losers" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/based_on_top_250_coins"
-                android:textColor="@color/gray_500"
-                android:textSize="11sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@id/txt_top_losers"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_top_losers" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_top_losers"
-                android:layout_width="0dp"
-                android:layout_height="108dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@id/recycler_top_gainers"
-                app:layout_constraintStart_toStartOf="@id/recycler_top_gainers"
-                app:layout_constraintTop_toBottomOf="@id/img_top_losers" />
-
-            <ImageView
-                android:id="@+id/img_trending"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recycler_top_losers" />
-
-            <TextView
-                android:id="@+id/txt_trending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/trending"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/img_trending"
-                app:layout_constraintStart_toEndOf="@id/img_trending"
-                app:layout_constraintTop_toTopOf="@id/img_trending" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/based_on_top_250_coins"
-                android:textColor="@color/gray_500"
-                android:textSize="11sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@id/txt_trending"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_trending" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_trending"
-                android:layout_width="0dp"
-                android:layout_height="108dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@id/recycler_top_gainers"
-                app:layout_constraintStart_toStartOf="@id/recycler_top_gainers"
-                app:layout_constraintTop_toBottomOf="@id/img_trending" />
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_top_gainers"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/recycler_top_gainers"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/recycler_top_gainers">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="108dp"
-                    android:orientation="horizontal">
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                </LinearLayout>
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_top_losers"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/recycler_top_losers"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/recycler_top_losers">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="108dp"
-                    android:orientation="horizontal">
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                </LinearLayout>
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_trending"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/recycler_trending"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/recycler_trending">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="108dp"
-                    android:orientation="horizontal">
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                    <include layout="@layout/top_mover_item_ph" />
-
-                </LinearLayout>
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

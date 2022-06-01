@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bullrun.databinding.TopMoverItemBinding
 import com.example.bullrun.ui.model.TopMoverUi
 
-class TopMoversAdapter(val context: Context,val itemWidth:Int,private val onClick: (topMoverUi: TopMoverUi) -> Unit) :
+class TopMoversAdapter(val context: Context,private val onClick: (topMoverUi: TopMoverUi) -> Unit) :
     ListAdapter<TopMoverUi, TopMoverVH>(TopMoverDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopMoverVH {
@@ -17,7 +17,7 @@ class TopMoversAdapter(val context: Context,val itemWidth:Int,private val onClic
     }
 
     override fun onBindViewHolder(holder: TopMoverVH, position: Int) {
-        getItem(position)?.let { holder.bind(it,context,itemWidth,position,onClick) }
+        getItem(position)?.let { holder.bind(it,context,position,onClick) }
     }
 }
 
@@ -25,12 +25,11 @@ class TopMoverVH private constructor(private val binding: TopMoverItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     lateinit var onClick: (topMoverUi: TopMoverUi) -> Unit
-    fun bind(topMoverUi: TopMoverUi, context: Context, itemWidth: Int, position: Int, onClick: (topMoverUi: TopMoverUi) -> Unit) {
+    fun bind(topMoverUi: TopMoverUi, context: Context, position: Int, onClick: (topMoverUi: TopMoverUi) -> Unit) {
         if (topMoverUi.coinId=="PlaceHolder")
             return
         binding.topMover=topMoverUi
-        binding.txtRank.text="#${position+1}"
-        binding.cardTopMover.layoutParams.width=itemWidth
+        binding.txtRank.text="${position+1}"
     }
 
     fun onClickListener(topMoverUi: TopMoverUi) = onClick(topMoverUi)

@@ -4,95 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="trendingCoin"
             type="com.example.bullrun.ui.model.TrendingCoin" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_top_mover"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        android:layout_margin="4dp"
-        android:backgroundTint="@color/white">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
-            <TextView
-                android:id="@+id/txt_rank"
-                android:layout_width="28dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/shape_txt_rank2"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/_3" />
+        <TextView
+            android:id="@+id/txt_rank"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="28dp"
+            android:background="@drawable/shape_txt_rank2"
+            android:gravity="top|center_horizontal"
+            android:textColor="@color/gray_500"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="3" />
 
-            <TextView
-                android:id="@+id/txt_symbol"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:text="@{trendingCoin.symbol}"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/txt_rank"
-                app:layout_constraintStart_toEndOf="@id/txt_rank"
-                app:layout_constraintTop_toTopOf="@id/txt_rank"
-                tools:text="CELR" />
+        <ImageView
+            android:id="@+id/img_logo"
+            context="@{context}"
+            imageUrl="@{trendingCoin.image}"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txt_rank"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
 
-            <TextView
-                android:id="@+id/txt_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@{String.valueOf(trendingCoin.score)}"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/txt_rank"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_rank"
-                tools:text="+24.86%" />
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:singleLine="true"
+            android:text="@{trendingCoin.coinName}"
+            android:textColor="@color/black_100"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/guideline_center_vertical"
+            app:layout_constraintEnd_toStartOf="@id/txt_score"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/img_logo"
+            tools:text="Celer Network" />
 
-            <TextView
-                android:id="@+id/txt_current_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:text='@{String.valueOf(trendingCoin.price)+" BTC"}'
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_symbol"
-                tools:text="0.8842 $" />
+        <TextView
+            android:id="@+id/txt_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{trendingCoin.symbol.toUpperCase()}"
+            android:textColor="@color/gray_700"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/img_logo"
+            app:layout_constraintTop_toBottomOf="@id/guideline_center_vertical"
+            tools:text="CELR" />
 
-            <TextView
-                android:id="@+id/txt_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="6dp"
-                android:text="@{trendingCoin.coinName}"
-                android:textColor="@color/gray_500"
-                android:textSize="11sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="Celr Network" />
+        <TextView
+            android:id="@+id/txt_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="@{String.valueOf(trendingCoin.score)}"
+            android:textColor="@color/black_100"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/txt_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_name"
+            tools:text="86.24" />
 
-            <ImageView
-                context="@{context}"
-                imageUrl="@{trendingCoin.image}"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_margin="6dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:src="@drawable/ic_launcher_background" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/txt_current_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center_vertical|end"
+            android:singleLine="true"
+            android:text='@{String.valueOf(trendingCoin.price)+" BTC"}'
+            android:textColor="@color/gray_700"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/txt_symbol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@id/txt_symbol"
+            app:layout_constraintTop_toTopOf="@id/txt_symbol"
+            tools:text="0.8842 $" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -49,4 +49,7 @@
     <string name="trending">Trending</string>
     <string name="top_losers">Top Losers</string>
     <string name="all_time_high">All Time High</string>
+    <string name="see_more">See more</string>
+    <string name="usd">USD</string>
+    <string name="new_transaction">New Transaction</string>
 </resources>

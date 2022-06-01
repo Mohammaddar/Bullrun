@@ -6,10 +6,10 @@
         app:constraintSetEnd="@+id/end"
         app:constraintSetStart="@+id/start">
 
-        <OnSwipe
-            app:dragDirection="dragStart"
-            app:clickAction="toggle"
-            app:targetId="@id/motion_l" />
+<!--        <OnSwipe-->
+<!--            app:dragDirection="dragStart"-->
+<!--            app:clickAction="toggle"-->
+<!--            app:targetId="@id/motion_l" />-->
 
         <KeyFrameSet>
         </KeyFrameSet>
@@ -19,51 +19,51 @@
     <!-- Constraints to apply at the start of the animation -->
     <ConstraintSet android:id="@+id/start">
 
-        <Constraint
-            android:id="@+id/l1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Constraint-->
+<!--            android:id="@+id/l1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_margin="8dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/guideline7"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Constraint
-            android:id="@+id/l2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            android:minWidth="200dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/guideline8"
-            app:layout_constraintStart_toEndOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Constraint-->
+<!--            android:id="@+id/l2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:minWidth="200dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/guideline8"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline7"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </ConstraintSet>
 
     <!-- Constraints to apply at the end of the animation -->
     <ConstraintSet android:id="@+id/end">
 
-        <Constraint
-            android:id="@+id/l1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/guideline6"
-            app:layout_constraintStart_toEndOf="@id/guideline5"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Constraint-->
+<!--            android:id="@+id/l1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_margin="8dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/guideline6"-->
+<!--            app:layout_constraintStart_toEndOf="@id/guideline5"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Constraint
-            android:id="@+id/l2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/guideline6"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Constraint-->
+<!--            android:id="@+id/l2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_margin="8dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/guideline6"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </ConstraintSet>
 </MotionScene>

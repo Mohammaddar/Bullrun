@@ -8,22 +8,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/drawable-v24/bottom_sheet_shape.xml" value="0.1395" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/drawable-v24/shape_circle.xml" value="0.138" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/drawable-v24/tab_indicator.xml" value="0.138" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/drawable/shape_bg_bottom_sheet_bottom.xml" value="0.1395" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/drawable/shape_circle.xml" value="0.138" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/drawable/shape_txt_rank2.xml" value="0.1545" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/activity_coin_info.xml" value="0.21574074074074073" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/activity_epoxy.xml" value="0.21574074074074073" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/activity_main.xml" value="0.1052393857271906" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/activity_wallet.xml" value="0.2" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/asset_list_item.xml" value="0.36" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/community_list_item.xml" value="0.21574074074074073" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/component_card.xml" value="0.21574074074074073" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/custom_marker.xml" value="0.6" />
-        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_coin_info.xml" value="0.268" />
-        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_main_list.xml" value="0.1052393857271906" />
-        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_portfolio.xml" value="0.1052393857271906" />
-        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/main_list_item.xml" value="0.3" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_basic_recycler_view.xml" value="0.2158406669754516" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_coin_info.xml" value="0.2" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_home.xml" value="0.3" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_main_list.xml" value="0.2" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/fragment_portfolio.xml" value="0.2" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/main_list_item.xml" value="0.21278538812785389" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/statistics_list_item.xml" value="0.21278538812785389" />
-        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/top_mover_item.xml" value="0.3" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/top_mover_item.xml" value="0.2" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/top_mover_item_ph.xml" value="0.3" />
-        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/trending_coin_item.xml" value="0.1" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/trending_coin_item.xml" value="0.2" />
+        <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/layout/wallet_pager_item.xml" value="0.21481481481481482" />
         <entry key="..\:/Users/asus/Desktop/MyApps/Bullrun/app/src/main/res/menu/menu_bottom_nav.xml" value="0.21278538812785389" />
       </map>
     </option>

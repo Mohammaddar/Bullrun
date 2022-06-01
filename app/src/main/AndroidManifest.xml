@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bullrun">
-        <activity
-            android:name=".ui.activitycoininfo.CoinInfoActivity"
-            android:exported="false" />
+
+<!--        <activity-->
+<!--            android:name=".ui.activitycoininfo.CoinInfoActivity"-->
+<!--            android:exported="false" />-->
         <activity android:name=".ui.activitywallet.WalletActivity" />
         <activity
             android:name=".ui.MainActivity"
