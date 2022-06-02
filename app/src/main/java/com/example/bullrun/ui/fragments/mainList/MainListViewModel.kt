@@ -25,10 +25,7 @@ class MainListViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             if (!coinRepository.isCoinsListAlreadyLoaded()) {
                 coinRepository.getAllCoinsListAndInsertToDB()
-                Log.d("TAG", "done")
             }
-            else
-                Log.d("TAG", "no need")
         }
     }
 

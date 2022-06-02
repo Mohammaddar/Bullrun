@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="wallet"
+            type="com.example.bullrun.ui.model.WalletUI" />
+
+        <variable
+            name="holder"
+            type="com.example.bullrun.ui.fragments.portfolio.WalletVH" />
+    </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,10 +38,11 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="12dp"
+                app:cardElevation="8dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClick="@{() -> holder.onClickListener(wallet)}">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -54,7 +65,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="24dp"
-                        android:text="@string/total_balance"
+                        android:text="@{wallet.walletName}"
+                        tools:text="Main Wallet"
                         android:textColor="@color/gray_700"
                         android:textSize="16sp"
                         app:layout_constraintStart_toEndOf="@id/trend_identifier"
@@ -78,7 +90,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="28dp"
-                        android:text="$ 28,572.91"
+                        android:text='@{"$ "+String.valueOf(wallet.walletBalance)}'
+                        tools:text="$ 28,572.91"
                         android:textColor="@color/primary"
                         android:textSize="24sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +132,7 @@
                         style="@style/StyleTextButtonBasic"
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
@@ -161,4 +174,4 @@
                 app:layout_constraintTop_toBottomOf="@id/card_wallet" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

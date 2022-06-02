@@ -147,8 +147,9 @@ class HomeFragment : Fragment() {
 
     private fun setupGlobalData() {
         viewModel.globalData.observe(viewLifecycleOwner) {
-            binding.globalDataUi = it
-            Log.d("TAGGL", "${it.totalMarketCap?.decimalCount(2)}")
+            it?.let {
+                binding.globalDataUi = it
+            }
         }
     }
 
@@ -207,13 +208,14 @@ class HomeFragment : Fragment() {
 
         val values = mutableListOf<Entry>()
         viewModel.topCoinPrices1D.observe(viewLifecycleOwner) { ls ->
-            values.clear()
-            repeat(30) {
-                values.add(Entry((it + 1).toFloat(), ls[ls.size - 32 + it][1].toFloat()))
+            ls?.let {
+                values.clear()
+                repeat(30) {
+                    values.add(Entry((it + 1).toFloat(), ls[ls.size - 32 + it][1].toFloat()))
+                }
+                setupLineChartTopCoin(requireNotNull(context), binding.lineChartTopCoin1, values)
+                setupLineChartTopCoin(requireNotNull(context), binding.lineChartTopCoin8, values)
             }
-            Log.d("TAGDE", "setupBarChart finish")
-            setupLineChartTopCoin(requireNotNull(context), binding.lineChartTopCoin1, values)
-            setupLineChartTopCoin(requireNotNull(context), binding.lineChartTopCoin8, values)
         }
 
     }

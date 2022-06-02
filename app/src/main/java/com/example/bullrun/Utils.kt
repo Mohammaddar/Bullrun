@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.DashPathEffect
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.bullrun.ui.custom.CustomMarker
 import com.github.mikephil.charting.charts.LineChart
@@ -201,3 +202,4 @@ fun setupLineChartTopCoin(context: Context, chart: LineChart, values: List<Entry
     Log.d("TAGDE","$values")
     chart.invalidate()
 }
+

@@ -2,15 +2,13 @@ package com.example.bullrun.data.repos.portfolio
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.room.withTransaction
-import com.example.bullrun.App
 import com.example.bullrun.data.database.CoinDatabase
 import com.example.bullrun.data.database.model.Asset
 import com.example.bullrun.data.database.model.Transaction
 import com.example.bullrun.data.database.model.Wallet
 import com.example.bullrun.data.remote.CoinService
-import kotlinx.coroutines.delay
+import com.example.bullrun.data.repos.invokeOrCatch
 import kotlinx.coroutines.flow.Flow
 
 class PortfolioRepository private constructor(context: Context) {
@@ -40,9 +38,9 @@ class PortfolioRepository private constructor(context: Context) {
         volume: Double,
         walletName: String
     ) {
-        val portfolioDao = coinDataBase.portfolioDao
-        coinDataBase.withTransaction {
-            try {
+        invokeOrCatch {
+            val portfolioDao = coinDataBase.portfolioDao
+            coinDataBase.withTransaction {
                 if (portfolioDao.isAssetExisted(coinId, walletName) == 1) {
                     portfolioDao.buyAsset(coinId, volume, volume * price, walletName)
                 } else {
@@ -71,29 +69,24 @@ class PortfolioRepository private constructor(context: Context) {
                         dateMillis = System.currentTimeMillis()
                     )
                 )
-            } catch (e: java.lang.Exception) {
-                Toast.makeText(
-                    App.applicationContext(),
-                    "Error occured message is ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
             }
         }
     }
 
     suspend fun sellAsset(coinId: String, volume: Double, price: Double, walletName: String) {
-        coinDataBase.portfolioDao.sellAsset(coinId, volume, volume * price, walletName)
-
-        coinDataBase.transactionDao.addTransaction(
-            Transaction(
-                type = "Sell",
-                coinId = coinId,
-                volume = volume,
-                price = price,
-                walletName = walletName,
-                dateMillis = System.currentTimeMillis()
+        invokeOrCatch {
+            coinDataBase.portfolioDao.sellAsset(coinId, volume, volume * price, walletName)
+            coinDataBase.transactionDao.addTransaction(
+                Transaction(
+                    type = "Sell",
+                    coinId = coinId,
+                    volume = volume,
+                    price = price,
+                    walletName = walletName,
+                    dateMillis = System.currentTimeMillis()
+                )
             )
-        )
+        }
     }
 
     fun getAllAssetsInWallet(walletName: String): Flow<List<Asset>> {
@@ -106,12 +99,12 @@ class PortfolioRepository private constructor(context: Context) {
     }
 
     suspend fun updateAssetsInfo(ids: List<String>) {
-        try {
+        invokeOrCatch {
             val assets = coinService.getCoinsByIDs(ids)
             coinDataBase.withTransaction {
                 Log.d("TAGP", "updateAssetsInfo: ${Thread.currentThread().name}")
                 assets.forEach {
-                    it.id?.let { it1 ->
+                    it.id.let { it1 ->
                         coinDataBase.portfolioDao.updateCurrentPrice(
                             it1,
                             it.currentPrice
@@ -120,36 +113,27 @@ class PortfolioRepository private constructor(context: Context) {
                 }
             }
             Log.d("TAGP", "updateAssetsInfo finish: ${Thread.currentThread().name}")
-        } catch (e: Exception) {
-            Toast.makeText(
-                App.applicationContext(),
-                "Error occured message is ${e.message}",
-                Toast.LENGTH_SHORT
-            ).show()
         }
     }
 
     suspend fun addNewWallet(wallet: Wallet) {
-        coinDataBase.walletDao.addWallet(wallet)
+        invokeOrCatch { coinDataBase.walletDao.addWallet(wallet) }
     }
 
     fun getAllWallets(): Flow<List<Wallet>> {
         return coinDataBase.walletDao.getAll()
     }
 
-    suspend fun getTransactionsByAssetAndWallet(assetName:String,walletName:String):List<Transaction>{
-        return coinDataBase.transactionDao.getTransactionByAssetAndWallet(assetName,walletName)
-    }
-
-    fun tryOrCatch(action: () -> Unit) {
-        try {
-            action()
-        } catch (e: Exception) {
-            Toast.makeText(
-                App.applicationContext(),
-                "Error occured message is ${e.message}",
-                Toast.LENGTH_SHORT
-            ).show()
+    suspend fun getTransactionsByAssetAndWallet(
+        assetName: String,
+        walletName: String
+    ): List<Transaction>? {
+        return invokeOrCatch {
+            coinDataBase.transactionDao.getTransactionByAssetAndWallet(
+                assetName,
+                walletName
+            )
         }
     }
+
 }

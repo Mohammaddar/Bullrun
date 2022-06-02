@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bullrun.databinding.WalletListItemBinding
+import com.example.bullrun.databinding.WalletPagerItemBinding
 import com.example.bullrun.ui.model.WalletUI
 
 class WalletListAdapter(val context: Context, private val onClick: (wallet: WalletUI) -> Unit) :
@@ -24,7 +24,7 @@ class WalletListAdapter(val context: Context, private val onClick: (wallet: Wall
     }
 }
 
-class WalletVH private constructor(val binding: WalletListItemBinding) :
+class WalletVH private constructor(val binding: WalletPagerItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     lateinit var onClick: (wallet: WalletUI) -> Unit
@@ -39,7 +39,7 @@ class WalletVH private constructor(val binding: WalletListItemBinding) :
     companion object {
         fun create(parent: ViewGroup): WalletVH {
             val binding =
-                WalletListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                WalletPagerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return WalletVH(binding)
         }
     }

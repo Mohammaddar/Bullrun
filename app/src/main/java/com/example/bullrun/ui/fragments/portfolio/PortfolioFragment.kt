@@ -8,7 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.bullrun.R
 import com.example.bullrun.databinding.FragmentPortfolioBinding
 import com.example.bullrun.ui.MainActivity
 import kotlinx.coroutines.launch
@@ -38,15 +39,15 @@ class PortfolioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).viewModel.bottomNavigationState.value="VISIBLE"
+        (activity as MainActivity).viewModel.bottomNavigationState.value = "VISIBLE"
 
-        setupRecyclerWallets()
+        setupPagerWallets()
 
-//        binding.btnNewWallet.setOnClickListener {
-//            lifecycleScope.launch {
-//                viewModel.addWallet("Wallet ${Random.nextInt(0, 100)}")
-//            }
-//        }
+        binding.btnAddNewWallet.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.addWallet("Wallet ${Random.nextInt(0, 100)}")
+            }
+        }
 
         /////////////////////////////////////////////////////
         /////////////////////////////////////////////////////
@@ -82,9 +83,10 @@ class PortfolioFragment : Fragment() {
 //            Log.d("TAGM", "$seekPosition")
 //        }
 //        binding.appbarLayout.addOnOffsetChangedListener(listener)
+
     }
 
-    private fun setupRecyclerWallets() {
+    private fun setupPagerWallets() {
         val walletAdapter = WalletListAdapter(requireNotNull(context)) {
             findNavController().navigate(
                 PortfolioFragmentDirections.actionPortfolioFragment2ToWalletActivity(
@@ -93,11 +95,20 @@ class PortfolioFragment : Fragment() {
             )
             //TODO
         }
-//        binding.recyclerWallets.adapter = walletAdapter
-//        binding.recyclerWallets.layoutManager = LinearLayoutManager(activity)
-//        viewModel.walletList.observe(viewLifecycleOwner) {
-//            walletAdapter.submitList(it)
-//        }
+        binding.pagerWallets.run {
+            (getChildAt(0) as RecyclerView).apply {
+                offscreenPageLimit = 1
+                val padding = resources.getDimensionPixelOffset(R.dimen.dp24)
+                setPadding(padding, 0, padding, 0)
+                clipToPadding = false
+                //TODO
+            }
+            adapter = walletAdapter
+        }
+
+        viewModel.walletList.observe(viewLifecycleOwner) {
+            walletAdapter.submitList(it)
+        }
     }
 
 

@@ -9,14 +9,15 @@ import androidx.paging.PagingData
 import com.example.bullrun.data.database.CoinDatabase
 import com.example.bullrun.data.database.model.Coin
 import com.example.bullrun.data.remote.CoinService
-import com.example.bullrun.ui.model.GlobalDataUI
-import com.example.bullrun.ui.model.TopMoverUi
+import com.example.bullrun.data.repos.invokeOrCatch
 import com.example.bullrun.ui.model.TrendingCoin
 import drewcarlson.coingecko.models.coins.CoinFullData
 import drewcarlson.coingecko.models.coins.CoinMarkets
 import drewcarlson.coingecko.models.coins.MarketChart
+import drewcarlson.coingecko.models.global.GlobalData
 import kotlinx.coroutines.flow.Flow
 
+//kinda refactored in 3/6/2022
 class CoinRepository private constructor(context: Context) {
 
     companion object {
@@ -53,7 +54,7 @@ class CoinRepository private constructor(context: Context) {
     }
 
     suspend fun getAllCoinsListAndInsertToDB() {
-        try {
+        invokeOrCatch {
             coinDataBase.CoinListDao.insertAll(coinService.getAllCoinsList().map {
                 com.example.bullrun.data.database.model.CoinList(
                     coinId = it.id,
@@ -61,84 +62,68 @@ class CoinRepository private constructor(context: Context) {
                     coinSymbol = it.symbol
                 )
             })
-        } catch (e: Exception) {
-            Log.d("TAG", e.message.toString())
         }
     }
 
     suspend fun isCoinsListAlreadyLoaded(): Boolean {
-        return coinDataBase.CoinListDao.isTableEmpty() == 0
+        return invokeOrCatch {
+            coinDataBase.CoinListDao.isTableEmpty() == 0
+        } ?: false
     }
 
     suspend fun getAllCoinsList(query: String): List<com.example.bullrun.data.database.model.CoinList> {
-        return coinDataBase.CoinListDao.getAll("%${query.replace(' ', '%')}%");
+        return invokeOrCatch {
+            coinDataBase.CoinListDao.getAll("%${query.replace(' ', '%')}%")
+        } ?: listOf()
     }
 
-    suspend fun getCoinInfoByID(coinId: String,tickers: Boolean,communityData: Boolean,developerData: Boolean,sparkline: Boolean): CoinFullData? {
-        return try {
-            coinService.getCoinByID(coinId,tickers,communityData,developerData,sparkline);
-        } catch (e: Exception) {
-            null
+    suspend fun getCoinInfoByID(
+        coinId: String,
+        tickers: Boolean,
+        communityData: Boolean,
+        developerData: Boolean,
+        sparkline: Boolean
+    ): CoinFullData? {
+        return invokeOrCatch {
+            coinService.getCoinByID(coinId, tickers, communityData, developerData, sparkline)
         }
     }
 
-    suspend fun getTopTenCoins(): List<CoinMarkets> {
-        return try {
+    suspend fun getTopTenCoins(): List<CoinMarkets>? {
+        return invokeOrCatch {
             coinService.getCoins(query = "", page = 1, pageSize = 10)
-        } catch (e: Exception) {
-            Log.d("TAG", e.message.toString())
-            listOf<CoinMarkets>()
         }
     }
 
-    suspend fun getChartByID(coinID: String,days:Double): MarketChart? {
-        return try {
-            coinService.getMarketChart(coinID,days);
-        } catch (e: Exception) {
-            null
+    suspend fun getChartByID(coinID: String, days: Double): MarketChart? {
+        return invokeOrCatch {
+            coinService.getMarketChart(coinID, days)
         }
     }
 
-    suspend fun getTopMovers(): HashMap<String, List<TopMoverUi>> {
-        val ls = coinService.getTop250Coins().sortedByDescending { it.priceChangePercentage24h }
-        return hashMapOf(
-            "Gainers" to ls.subList(0, 10)
-                .map {
-                    TopMoverUi(
-                        it.id,
-                        it.name,
-                        it.symbol,
-                        it.priceChange24h,
-                        it.image,
-                        it.currentPrice
-                    )
-                },
-            "Losers" to ls.subList(ls.size - 10, ls.size)
-                .map {
-                    TopMoverUi(
-                        it.id,
-                        it.name,
-                        it.symbol,
-                        it.priceChange24h,
-                        it.image,
-                        it.currentPrice
-                    )
-                }
-        )
+    suspend fun getTop250Coins(): List<CoinMarkets>? {
+        return invokeOrCatch {
+            coinService.getTop250Coins()
+        }
     }
 
-    suspend fun getTrendings():List<TrendingCoin> {
-        return coinService.getTrendingCoins().map { it.item.run { TrendingCoin(id,name,symbol,score,small,priceBtc) } }
+    suspend fun getTrending(): List<TrendingCoin>? {
+        return invokeOrCatch {
+            coinService.getTrendingCoins()
+                .map { it.item.run { TrendingCoin(id, name, symbol, score, small, priceBtc) } }
+        }
     }
 
-    suspend fun getTopCoinChart(): MarketChart {
-        val ls=coinService.getTopCoinMarketChart()
-        Log.d("TAGDATA","$ls")
-        return ls
+    suspend fun getTopCoinChart(): MarketChart? {
+        return invokeOrCatch {
+            coinService.getTopCoinMarketChart()
+        }
     }
 
-    suspend fun getGlobalData(): GlobalDataUI {
-        return GlobalDataUI.transformDataModelToUiModel(coinService.getGlobalData())
+    suspend fun getGlobalData(): GlobalData? {
+        return invokeOrCatch {
+            coinService.getGlobalData()
+        }
     }
 
 }

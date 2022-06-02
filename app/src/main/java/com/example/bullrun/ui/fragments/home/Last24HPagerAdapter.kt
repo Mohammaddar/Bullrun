@@ -85,7 +85,9 @@ class BasicRecyclerViewFragment(val position: Int, val fragment: Fragment) : Fra
                 }
 
                 (fragment as HomeFragment).viewModel.trending.observe(viewLifecycleOwner) {
-                    trendingAdapter.submitList(it)
+                    it?.let {
+                        trendingAdapter.submitList(it)
+                    }
                 }
             }
         }

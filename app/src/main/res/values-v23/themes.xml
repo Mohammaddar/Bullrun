@@ -14,7 +14,7 @@
         <item name="android:fontFamily">@font/bahn_bold</item>
         <item name="android:textStyle">bold</item>
 
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/background</item>
 
         <item name="android:textColor">@color/black_light</item>
 

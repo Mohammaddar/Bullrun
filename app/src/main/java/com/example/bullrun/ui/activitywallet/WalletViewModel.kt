@@ -104,7 +104,8 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
             for ((assetName, chartPrices) in assetChartPricesPairs) {
                 Log.d("TAGDE", "viewmodel chartPrices ${chartPrices.size}")
                 val transactions =
-                    portfolioRepository.getTransactionsByAssetAndWallet(assetName, walletName.value)
+                    portfolioRepository.getTransactionsByAssetAndWallet(assetName, walletName.value)?:return
+
 
 
                 kotlin.run {

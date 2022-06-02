@@ -56,7 +56,8 @@ class WalletActivity : AppCompatActivity() {
             Log.d("TAGDE", "change")
             viewModel.timeFrame.value?.let { tf ->
                 viewModel.chartsDataset.value?.let { dataset ->
-                    dataset[tf]?.let { data ->
+                    val data=dataset[tf]
+                    if (data!=null && data.size!=0){
                         Log.d("TAGDE", "setupBarChart call $data")
                         setupBarChart(tf, data)
                     }
