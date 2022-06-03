@@ -33,10 +33,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.bottomNavigationState.collectLatest {
                 if (it == "VISIBLE") {
                     window.navigationBarColor = ContextCompat.getColor(this@MainActivity,R.color.primary)
-                    binding.bottomNavCard.visibility = View.VISIBLE
+                    binding.bottomAppbar.visibility = View.VISIBLE
                 } else if (it == "HIDDEN") {
                     window.navigationBarColor = ContextCompat.getColor(this@MainActivity,R.color.white)
-                    binding.bottomNavCard.visibility = View.INVISIBLE
+                    binding.bottomAppbar.visibility = View.INVISIBLE
                 }
 
             }

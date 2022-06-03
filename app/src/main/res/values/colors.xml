@@ -26,6 +26,7 @@
     <color name="background_shade3">#F6F5F5</color>
     <color name="background_shade4">#EFEFEF</color>
     <color name="primary">#202020</color>
+    <color name="accent">#FFC194</color>
     <color name="green">#219F94</color>
     <color name="red">#FF8D94</color>
     <color name="silver_200">#A4A4B2</color>
