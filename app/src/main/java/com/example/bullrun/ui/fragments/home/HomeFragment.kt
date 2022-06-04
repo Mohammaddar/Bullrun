@@ -9,17 +9,13 @@ import android.view.ViewGroup
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.bullrun.databinding.FragmentHomeBinding
-import com.example.bullrun.decimalCount
 import com.example.bullrun.setupLineChartTopCoin
 import com.example.bullrun.ui.MainActivity
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -62,22 +58,7 @@ class HomeFragment : Fragment() {
         setupGlobalData()
         setupTopCoinsViewLAF()
 
-        val pagerAdapter=Last24HPagerAdapter(this)
-        binding.viewPagerLst24h.adapter=pagerAdapter
-
-        TabLayoutMediator(binding.tabLayoutLst24h, binding.viewPagerLst24h) { tab, position ->
-            when (position) {
-                0 -> {
-                    tab.text="Top Gainers"
-                }
-                1 -> {
-                    tab.text="Top Losers"
-                }
-                2 -> {
-                    tab.text="Trending"
-                }
-            }
-        }.attach()
+        setupLast24HTabAndPager()
 
 //        val topGainersAdapter = TopMoversAdapter(
 //            requireNotNull(context),
@@ -120,6 +101,25 @@ class HomeFragment : Fragment() {
 //        }
 
 
+    }
+
+    private fun setupLast24HTabAndPager() {
+        val pagerAdapter = Last24HPagerAdapter(this)
+        binding.viewPagerLst24h.adapter = pagerAdapter
+
+        TabLayoutMediator(binding.tabLayoutLst24h, binding.viewPagerLst24h) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "Top Gainers"
+                }
+                1 -> {
+                    tab.text = "Top Losers"
+                }
+                2 -> {
+                    tab.text = "Trending"
+                }
+            }
+        }.attach()
     }
 
     private fun setupTopCoinsViewLAF() {

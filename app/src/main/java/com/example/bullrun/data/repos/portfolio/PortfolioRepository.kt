@@ -6,6 +6,7 @@ import androidx.room.withTransaction
 import com.example.bullrun.data.database.CoinDatabase
 import com.example.bullrun.data.database.model.Asset
 import com.example.bullrun.data.database.model.Transaction
+import com.example.bullrun.data.database.model.TransactionType
 import com.example.bullrun.data.database.model.Wallet
 import com.example.bullrun.data.remote.CoinService
 import com.example.bullrun.data.repos.invokeOrCatch
@@ -36,7 +37,7 @@ class PortfolioRepository private constructor(context: Context) {
         currentPrice: Double,
         price: Double,
         volume: Double,
-        walletName: String
+        walletName: String,
     ) {
         invokeOrCatch {
             val portfolioDao = coinDataBase.portfolioDao
@@ -61,29 +62,43 @@ class PortfolioRepository private constructor(context: Context) {
                 }
                 coinDataBase.transactionDao.addTransaction(
                     Transaction(
-                        type = "Buy",
+                        type = TransactionType.Buy,
                         coinId = coinId,
+                        coinName = coinName,
+                        symbol = symbol,
                         volume = volume,
                         price = price,
                         walletName = walletName,
-                        dateMillis = System.currentTimeMillis()
+                        dateMillis = System.currentTimeMillis(),
+                        image = image
                     )
                 )
             }
         }
     }
 
-    suspend fun sellAsset(coinId: String, volume: Double, price: Double, walletName: String) {
+    suspend fun sellAsset(
+        coinId: String,
+        coinName: String,
+        symbol: String,
+        volume: Double,
+        price: Double,
+        walletName: String,
+        image: String
+    ) {
         invokeOrCatch {
             coinDataBase.portfolioDao.sellAsset(coinId, volume, volume * price, walletName)
             coinDataBase.transactionDao.addTransaction(
                 Transaction(
-                    type = "Sell",
+                    type = TransactionType.Sell,
                     coinId = coinId,
+                    coinName = coinName,
+                    symbol = symbol,
                     volume = volume,
                     price = price,
                     walletName = walletName,
-                    dateMillis = System.currentTimeMillis()
+                    dateMillis = System.currentTimeMillis(),
+                    image = image
                 )
             )
         }
@@ -122,6 +137,10 @@ class PortfolioRepository private constructor(context: Context) {
 
     fun getAllWallets(): Flow<List<Wallet>> {
         return coinDataBase.walletDao.getAll()
+    }
+
+    suspend fun getTransactionsByWallet(walletName: String): Flow<List<Transaction>> {
+        return coinDataBase.transactionDao.getTransactionByWallet(walletName)
     }
 
     suspend fun getTransactionsByAssetAndWallet(

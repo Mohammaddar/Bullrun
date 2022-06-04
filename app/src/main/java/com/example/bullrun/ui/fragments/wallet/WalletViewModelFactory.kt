@@ -1,10 +1,10 @@
-package com.example.bullrun.ui.activitywallet
+package com.example.bullrun.ui.fragments.wallet
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class WalletActivityViewModelFactory(
+class WalletViewModelFactory(
     private val application: Application
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")

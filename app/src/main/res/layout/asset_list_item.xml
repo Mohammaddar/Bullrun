@@ -12,7 +12,7 @@
 
         <variable
             name="holder"
-            type="com.example.bullrun.ui.activitywallet.AssetVH" />
+            type="com.example.bullrun.ui.fragments.wallet.AssetVH" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

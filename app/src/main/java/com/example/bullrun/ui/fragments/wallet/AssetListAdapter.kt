@@ -1,10 +1,8 @@
-package com.example.bullrun.ui.activitywallet
+package com.example.bullrun.ui.fragments.wallet
 
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Color
 import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -13,13 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bullrun.databinding.AssetListItemBinding
 import com.example.bullrun.databinding.AssetListItemEmptyBinding
 import com.example.bullrun.setupLineChart2
-import com.example.bullrun.ui.model.AssetItem
-import com.example.bullrun.ui.model.AssetUI
+import com.example.bullrun.ui.model.HoldingItem
+import com.example.bullrun.ui.model.HoldingUI
 import com.example.bullrun.ui.model.EmptyUI
-import java.security.AccessController.getContext
 
 class AssetListAdapter(val context: Context) :
-    ListAdapter<AssetItem, RecyclerView.ViewHolder>(AssetListDiffUtil()) {
+    ListAdapter<HoldingItem, RecyclerView.ViewHolder>(AssetListDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             1 -> AssetVH.create(parent)
@@ -34,7 +31,7 @@ class AssetListAdapter(val context: Context) :
         when (holder) {
             is AssetVH -> {
                 getItem(position)?.let {
-                    holder.bind(context, it as AssetUI)
+                    holder.bind(context, it as HoldingUI)
                 }
             }
         }
@@ -54,7 +51,7 @@ class AssetListAdapter(val context: Context) :
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is AssetUI -> 1
+            is HoldingUI -> 1
             is EmptyUI -> 0
         }
     }
@@ -63,10 +60,10 @@ class AssetListAdapter(val context: Context) :
 class AssetVH private constructor(val binding: AssetListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    lateinit var asset: AssetUI
+    lateinit var asset: HoldingUI
     fun bind(
         context: Context,
-        asset: AssetUI,
+        asset: HoldingUI,
     ) {
         //CoroutineScope(Dispatchers.Default).launch {
         this@AssetVH.asset = asset
@@ -146,15 +143,15 @@ class EmptyVH private constructor(val binding: AssetListItemEmptyBinding) :
 }
 
 
-class AssetListDiffUtil : DiffUtil.ItemCallback<AssetItem>() {
-    override fun areItemsTheSame(oldItem: AssetItem, newItem: AssetItem): Boolean {
-        return if (oldItem is AssetUI && newItem is AssetUI)
+class AssetListDiffUtil : DiffUtil.ItemCallback<HoldingItem>() {
+    override fun areItemsTheSame(oldItem: HoldingItem, newItem: HoldingItem): Boolean {
+        return if (oldItem is HoldingUI && newItem is HoldingUI)
             oldItem.coinName == newItem.coinName
         else
             true
     }
 
-    override fun areContentsTheSame(oldItem: AssetItem, newItem: AssetItem): Boolean {
+    override fun areContentsTheSame(oldItem: HoldingItem, newItem: HoldingItem): Boolean {
         return oldItem == newItem
     }
 

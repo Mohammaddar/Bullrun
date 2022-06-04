@@ -2,11 +2,8 @@ package com.example.bullrun.ui.fragments.transaction
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.bullrun.data.database.model.Asset
 import com.example.bullrun.data.repos.coin.CoinRepository
 import com.example.bullrun.data.repos.portfolio.PortfolioRepository
-import drewcarlson.coingecko.models.coins.CoinFullData
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class TransactionViewModel(application: Application) : AndroidViewModel(application) {
@@ -21,7 +18,8 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
 
     var coin = coinId.switchMap {
         liveData {
-            coinRepository.getCoinInfoByID(it,
+            coinRepository.getCoinInfoByID(
+                it,
                 tickers = false,
                 communityData = false,
                 developerData = false,
@@ -31,7 +29,7 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
     }
 
 
-    fun buyAsset(buyingPrice: Double, buyingVolume: Double,walletName:String) {
+    fun buyAsset(buyingPrice: Double, buyingVolume: Double, walletName: String) {
         viewModelScope.launch {
             coin.value?.let {
                 portfolioRepository.buyAsset(
@@ -48,14 +46,17 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    fun sellAsset(sellingPrice: Double, sellingVolume: Double,walletName:String) {
+    fun sellAsset(sellingPrice: Double, sellingVolume: Double, walletName: String) {
         viewModelScope.launch {
             coin.value?.let {
                 portfolioRepository.sellAsset(
                     coinId = it.id,
+                    coinName=it.name,
+                    symbol=it.symbol,
                     volume = sellingVolume,
                     price = sellingPrice,
-                    walletName=walletName
+                    walletName = walletName,
+                    image = it.image.large ?: ""
                 )
             }
         }

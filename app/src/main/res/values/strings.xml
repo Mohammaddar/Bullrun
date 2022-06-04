@@ -52,4 +52,5 @@
     <string name="see_more">See more</string>
     <string name="usd">USD</string>
     <string name="new_transaction">New Transaction</string>
+    <string name="transaction">Transaction</string>
 </resources>

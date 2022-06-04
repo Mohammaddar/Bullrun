@@ -8,26 +8,26 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.bullrun.databinding.FragmentBasicRecyclerViewBinding
+import com.example.bullrun.databinding.BasicRecyclerViewBinding
 
 class Last24HPagerAdapter(val fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-        return BasicRecyclerViewFragment(position, this.fragment)
+        return Last24HPagerBasicRecyclerViewFragment(position, this.fragment)
     }
 }
 
-class BasicRecyclerViewFragment(val position: Int, val fragment: Fragment) : Fragment() {
+class Last24HPagerBasicRecyclerViewFragment(val position: Int, val fragment: Fragment) : Fragment() {
 
-    lateinit var binding: FragmentBasicRecyclerViewBinding
+    lateinit var binding: BasicRecyclerViewBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBasicRecyclerViewBinding.inflate(layoutInflater, container, false)
+        binding = BasicRecyclerViewBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

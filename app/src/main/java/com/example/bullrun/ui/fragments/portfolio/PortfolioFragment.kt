@@ -89,7 +89,7 @@ class PortfolioFragment : Fragment() {
     private fun setupPagerWallets() {
         val walletAdapter = WalletListAdapter(requireNotNull(context)) {
             findNavController().navigate(
-                PortfolioFragmentDirections.actionPortfolioFragment2ToWalletActivity(
+                PortfolioFragmentDirections.actionPortfolioFragmentToWalletFragment2(
                     it.walletName
                 )
             )
@@ -101,7 +101,7 @@ class PortfolioFragment : Fragment() {
                 val padding = resources.getDimensionPixelOffset(R.dimen.dp24)
                 setPadding(padding, 0, padding, 0)
                 clipToPadding = false
-                //TODO
+                //TODO Under
             }
             adapter = walletAdapter
         }

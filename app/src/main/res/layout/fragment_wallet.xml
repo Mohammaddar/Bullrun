@@ -6,25 +6,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="64dp" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btn_back"
+            style="@style/circleImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/primary"
+            android:src="@drawable/back"
+            app:contentPadding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic" />
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:text="@string/portfolio"
+            android:layout_marginStart="16dp"
+            android:text="@string/overview"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="@id/btn_back" />
 
         <TextView
             android:id="@+id/txtCurrency"
@@ -35,23 +42,20 @@
             android:textColor="@color/gray_800"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
+            app:layout_constraintBottom_toBottomOf="@id/txtTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="@id/txtTitle" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_total_balance"
+            android:id="@+id/card_wallet_overview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/primary"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTitle">
+            android:layout_height="400dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_back">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -63,12 +67,12 @@
                     android:layout_height="8dp"
                     android:layout_marginStart="24dp"
                     app:cardCornerRadius="45dp"
-                    app:layout_constraintBottom_toBottomOf="@id/txt_total_balance_title"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_wallet_name"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/txt_total_balance_title" />
+                    app:layout_constraintTop_toTopOf="@id/txt_wallet_name" />
 
                 <TextView
-                    android:id="@+id/txt_total_balance_title"
+                    android:id="@+id/txt_wallet_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -79,31 +83,17 @@
                     app:layout_constraintStart_toEndOf="@id/trend_identifier"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/btn_statistics"
-                    style="@style/circleImageView"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="@color/white"
-                    android:src="@drawable/bar_chart"
-                    app:contentPadding="12dp"
-                    app:layout_constraintBottom_toBottomOf="@id/txt_total_balance_title"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/txt_total_balance_title"
-                    app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic" />
-
                 <TextView
                     android:id="@+id/txt_total_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="12dp"
                     android:text="$ 28,572.91"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primary"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_total_balance_title" />
+                    app:layout_constraintTop_toBottomOf="@id/txt_wallet_name" />
 
                 <TextView
                     android:id="@+id/txt_total_balance_change"
@@ -135,72 +125,113 @@
                     app:layout_constraintStart_toStartOf="@+id/txt_total_balance"
                     app:layout_constraintTop_toBottomOf="@+id/txt_total_balance" />
 
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/line_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/txt_lst24H_change_desc"
+                    app:layout_constraintBottom_toTopOf="@id/btn_add_new_transaction"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+
                 <Button
-                    android:id="@+id/btn_add_new_wallet"
+                    android:id="@+id/btn_add_new_transaction"
                     style="@style/StyleTextButtonBasic"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="16dp"
-                    android:backgroundTint="@color/white"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="@color/primary"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:paddingStart="32dp"
-                    android:paddingEnd="32dp"
-                    android:text="Add New Wallet"
-                    android:textColor="@color/black_100"
+                    android:text="@string/transaction"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/txt_total_balance"
-                    app:layout_constraintTop_toBottomOf="@id/txt_lst24H_change_desc" />
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
         <ImageView
-            android:id="@+id/img_wallets"
+            android:id="@+id/img_assets"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginStart="36dp"
-            android:src="@drawable/wallet"
-            app:layout_constraintBottom_toBottomOf="@id/txt_wallets_title"
+            android:src="@drawable/asset"
+            app:layout_constraintBottom_toBottomOf="@id/txt_assets_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txt_wallets_title" />
+            app:layout_constraintTop_toTopOf="@id/txt_assets_title" />
 
         <TextView
-            android:id="@+id/txt_wallets_title"
+            android:id="@+id/txt_assets_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
-            android:text="@string/wallets"
+            android:text="@string/assets"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/img_wallets"
-            app:layout_constraintTop_toBottomOf="@id/card_total_balance" />
+            app:layout_constraintStart_toEndOf="@id/img_assets"
+            app:layout_constraintTop_toBottomOf="@id/card_wallet_overview" />
 
         <TextView
-            android:id="@+id/txt_wallets_count"
+            android:id="@+id/txt_assets_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
             android:text="3 wallets"
             android:textColor="@color/gray_800"
             android:textSize="14sp"
             android:textStyle="normal"
-            android:layout_marginEnd="32dp"
+            app:layout_constraintBottom_toBottomOf="@id/txt_assets_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txt_wallets_title"
-            app:layout_constraintBottom_toBottomOf="@id/txt_wallets_title"/>
+            app:layout_constraintTop_toTopOf="@id/txt_assets_title" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pager_wallets"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_assets"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            app:layout_constraintTop_toBottomOf="@id/txt_wallets_title"
-            android:layout_marginBottom="80dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_assets_title"
+            app:shapeAppearance="@style/BottomSheetDialogShape">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_assets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabGravity="start"
+                    app:tabIndicator="@drawable/tab_indicator"
+                    app:tabIndicatorColor="@color/bg_orange_too_dark"
+                    app:tabPaddingEnd="8dp"
+                    app:tabPaddingStart="8dp"
+                    app:tabRippleColor="@color/transparent"
+                    app:tabSelectedTextColor="@color/primary"
+                    app:tabTextAppearance="@style/tabLayoutTitleTextApp"
+                    app:tabTextColor="@color/gray_500" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_pager_assets"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

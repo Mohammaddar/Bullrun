@@ -9,15 +9,15 @@
         android:name="com.example.bullrun.ui.fragments.portfolio.PortfolioFragment"
         android:label="PortfolioFragment" >
         <action
-            android:id="@+id/action_portfolioFragment2_to_walletActivity"
-            app:destination="@id/walletActivity" />
+            android:id="@+id/action_portfolioFragment_to_walletFragment2"
+            app:destination="@id/walletFragment2" />
     </fragment>
-    <activity
-        android:id="@+id/walletActivity"
-        android:name="com.example.bullrun.ui.activitywallet.WalletActivity"
-        android:label="WalletActivity" >
+    <fragment
+        android:id="@+id/walletFragment2"
+        android:name="com.example.bullrun.ui.fragments.wallet.WalletFragment"
+        android:label="WalletFragment" >
         <argument
             android:name="walletName"
             app:argType="string" />
-    </activity>
+    </fragment>
 </navigation>

@@ -9,16 +9,18 @@ import kotlinx.android.parcel.Parcelize
 data class Transaction(
     @PrimaryKey(autoGenerate = true)
     var id:Int=0,
-
-    var type:String,//Buy or Sell
-
+    var type:TransactionType,//Buy or Sell
     var coinId:String,
-
+    var coinName:String,
+    var symbol:String,
     var volume:Double,
-
     var price:Double,
-
     var walletName: String,
-
-    var dateMillis:Long
+    var dateMillis:Long,
+    var image:String
 )
+
+enum class TransactionType(val text:String){
+    Buy("BUY"),
+    Sell("SELL")
+}

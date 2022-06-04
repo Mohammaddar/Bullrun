@@ -1,4 +1,4 @@
-package com.example.bullrun.ui.activitywallet
+package com.example.bullrun.ui.fragments.wallet
 
 import android.app.Application
 import android.util.Log
@@ -7,9 +7,11 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.bullrun.data.database.model.Transaction
+import com.example.bullrun.data.database.model.TransactionType
 import com.example.bullrun.data.repos.coin.CoinRepository
 import com.example.bullrun.data.repos.portfolio.PortfolioRepository
-import com.example.bullrun.ui.model.AssetUI
+import com.example.bullrun.ui.model.HoldingUI
+import com.example.bullrun.ui.model.TransactionUI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -25,7 +27,9 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
 
     var timeFrame = MutableLiveData<String>()
 
-    var assetsList = MutableLiveData<MutableList<AssetUI>>()
+    var holdings = MutableLiveData<MutableList<HoldingUI>>()
+
+    val transactions = MutableLiveData<List<TransactionUI>>()
 
     val chartsDataset = MutableLiveData<HashMap<String, MutableList<Double>>>()
 
@@ -56,18 +60,39 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                     )
 
                     Log.d("TAGP", "unempty wallet name : ${Thread.currentThread().name}")
-                    portfolioRepository.getAllAssetsInWallet(walletName).distinctUntilChanged()
-                        .map { it2 ->
-                            Log.d("TAGP", "map : ${Thread.currentThread().name}")
+                    launch {
+                        Log.d("TAGP", "collect-1: ${Thread.currentThread().name}")
+                        portfolioRepository.getAllAssetsInWallet(walletName).distinctUntilChanged()
+                            .map { it2 ->
+                                Log.d("TAGP", "map : ${Thread.currentThread().name}")
+                                delay(350)
+                                HoldingUI.transformDataModelToUiModel(it2, application)
+                                    .toMutableList()
+                            }.flowOn(Dispatchers.Default).collectLatest { it3 ->
+                                Log.d("TAGP", "collect2: ${Thread.currentThread().name}")
+                                holdings.value = it3
+                                //portfolioRepository.updateAssetsInfo(it3.map { it1 -> it1.coinId })//TODO see if you can refactor this
+                                fetchChart(it3)
+                                Log.d("TAGP", "collect3: ${Thread.currentThread().name}")
+                            }
+                        Log.d("TAGP", "collect17: ${Thread.currentThread().name}")
+                    }
+
+                    Log.d("TAGP", "collect18: ${Thread.currentThread().name}")
+                    launch {
+                        Log.d("TAGP", "collect19: ${Thread.currentThread().name}")
+                        portfolioRepository.getTransactionsByWallet(walletName).map { it2 ->
+                            Log.d("TAGP", "collect20: ${Thread.currentThread().name}")
                             delay(350)
-                            AssetUI.transformDataModelToUiModel(it2, application).toMutableList()
+                            Log.d("TAGP", "collect21: ${Thread.currentThread().name}")
+                            TransactionUI.transformDataModelToUiModel(it2).toMutableList()
                         }.flowOn(Dispatchers.Default).collectLatest { it3 ->
-                            Log.d("TAGP", "collect2: ${Thread.currentThread().name}")
-                            assetsList.value = it3
-                            //portfolioRepository.updateAssetsInfo(it3.map { it1 -> it1.coinId })//TODO see if you can refactor this
-                            fetchChart(it3)
-                            Log.d("TAGP", "collect3: ${Thread.currentThread().name}")
+                            transactions.value = it3
+                            Log.d("TAGP", "collect23: $it3")
                         }
+                        Log.d("TAGP", "collect24: ${Thread.currentThread().name}")
+                    }
+                    Log.d("TAGP", "collect25: ${Thread.currentThread().name}")
                 }
             }
 
@@ -78,7 +103,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
     private val assetChartPricesPairs = mutableListOf<Pair<String, List<List<String>>>>()
     var lastOnlineFetchTime: Long = 0
 
-    suspend fun fetchChart(assetList: List<AssetUI>) {
+    suspend fun fetchChart(assetList: List<HoldingUI>) {
         if (assetChartPricesPairs.isEmpty() || System.currentTimeMillis() > lastOnlineFetchTime + (60 * 1000)) {
             val job = viewModelScope.launch(Dispatchers.IO) {
                 for (asset in assetList) {
@@ -104,7 +129,8 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
             for ((assetName, chartPrices) in assetChartPricesPairs) {
                 Log.d("TAGDE", "viewmodel chartPrices ${chartPrices.size}")
                 val transactions =
-                    portfolioRepository.getTransactionsByAssetAndWallet(assetName, walletName.value)?:return
+                    portfolioRepository.getTransactionsByAssetAndWallet(assetName, walletName.value)
+                        ?: return
 
 
 
@@ -121,7 +147,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                         validTransactions.clear()
                         validTransactions.addAll(transactions.filter { it.dateMillis in (currentTimeMillis + 1)..lastTimeMillis })
                         for (transaction in validTransactions) {
-                            if (transaction.type == "Buy") {
+                            if (transaction.type == TransactionType.Buy) {
                                 currentVol -= transaction.volume
                             } else {//Sell
                                 currentVol += transaction.volume
@@ -152,7 +178,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                         validTransactions.clear()
                         validTransactions.addAll(transactions.filter { it.dateMillis in (currentTimeMillis + 1)..lastTimeMillis })
                         for (transaction in validTransactions) {
-                            if (transaction.type == "Buy") {
+                            if (transaction.type == TransactionType.Buy) {
                                 currentVol -= transaction.volume
                             } else {//Sell
                                 currentVol += transaction.volume
@@ -183,7 +209,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                         validTransactions.clear()
                         validTransactions.addAll(transactions.filter { it.dateMillis in (currentTimeMillis + 1)..lastTimeMillis })
                         for (transaction in validTransactions) {
-                            if (transaction.type == "Buy") {
+                            if (transaction.type == TransactionType.Buy) {
                                 currentVol -= transaction.volume
                             } else {//Sell
                                 currentVol += transaction.volume
@@ -214,7 +240,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                         validTransactions.clear()
                         validTransactions.addAll(transactions.filter { it.dateMillis in (currentTimeMillis + 1)..lastTimeMillis })
                         for (transaction in validTransactions) {
-                            if (transaction.type == "Buy") {
+                            if (transaction.type == TransactionType.Buy) {
                                 currentVol -= transaction.volume
                             } else {//Sell
                                 currentVol += transaction.volume

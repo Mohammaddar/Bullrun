@@ -78,6 +78,14 @@ fun setPriceChangeColor(view: MaterialCardView,changePercentage: Double,context:
     }
 }
 
+@BindingAdapter("transactionType","context")
+fun setTransactionTypeColor(view: MaterialCardView,transactionType: String,context: Context) {
+    when(transactionType){
+        "BUY"->{view.setCardBackgroundColor(ContextCompat.getColor(context, R.color.blue))}
+        "SELL"->{view.setCardBackgroundColor(ContextCompat.getColor(context, R.color.red))}
+    }
+}
+
 suspend fun imageUrl2(
     view: ImageView,
     url: String?,

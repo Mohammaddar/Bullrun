@@ -16,7 +16,6 @@
 <!--        <activity-->
 <!--            android:name=".ui.activitycoininfo.CoinInfoActivity"-->
 <!--            android:exported="false" />-->
-        <activity android:name=".ui.activitywallet.WalletActivity" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

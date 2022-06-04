@@ -15,6 +15,7 @@ import com.example.bullrun.R
 import com.example.bullrun.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 
@@ -34,9 +35,11 @@ class MainActivity : AppCompatActivity() {
                 if (it == "VISIBLE") {
                     window.navigationBarColor = ContextCompat.getColor(this@MainActivity,R.color.primary)
                     binding.bottomAppbar.visibility = View.VISIBLE
+                    binding.fab.visibility = View.VISIBLE
                 } else if (it == "HIDDEN") {
                     window.navigationBarColor = ContextCompat.getColor(this@MainActivity,R.color.white)
                     binding.bottomAppbar.visibility = View.INVISIBLE
+                    binding.fab.visibility = View.INVISIBLE
                 }
 
             }

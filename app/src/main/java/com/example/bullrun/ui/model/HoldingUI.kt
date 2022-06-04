@@ -3,23 +3,16 @@ package com.example.bullrun.ui.model
 import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
-import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.blue
-import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.green
 import androidx.core.graphics.red
 import com.bumptech.glide.Glide
-import com.example.bullrun.R
 import com.example.bullrun.data.database.model.Asset
 import com.example.bullrun.decimalCount
 import com.github.mikephil.charting.data.Entry
-import com.google.android.material.card.MaterialCardView
-import java.math.BigDecimal
-import java.math.RoundingMode
 
-sealed class AssetItem
-data class AssetUI(
+sealed class HoldingItem
+data class HoldingUI(
     var coinId: String,
     val coinName: String,
     val imageURL: String? = null,
@@ -32,7 +25,7 @@ data class AssetUI(
     val imageBitmap: Bitmap?=null,
     val theme:String,
     val tickers:List<Entry>
-) :AssetItem() {
+) :HoldingItem() {
 
     private val _totalBuyingVolume = totalBuyingVolume
 
@@ -67,7 +60,7 @@ data class AssetUI(
 
 
     companion object {
-        fun transformDataModelToUiModel(ls: List<Asset>,context:Context): List<AssetUI> {
+        fun transformDataModelToUiModel(ls: List<Asset>,context:Context): List<HoldingUI> {
             Log.d("TAGP", "thread4 : ${Thread.currentThread().name}")
             return ls.map {
                 Log.d("TAGI", "${it.coinName} 1 : ${Thread.currentThread().name}")
@@ -108,7 +101,7 @@ data class AssetUI(
                     add(Entry(28f, 104f))
                     add(Entry(29f, 106f))
                 }
-                AssetUI(
+                HoldingUI(
                     it.coinId,
                     it.coinName,
                     it.image,
@@ -172,4 +165,4 @@ data class AssetUI(
 
 }
 
-data class EmptyUI(val name: String = "empty"):AssetItem()
+data class EmptyUI(val name: String = "empty"):HoldingItem()
