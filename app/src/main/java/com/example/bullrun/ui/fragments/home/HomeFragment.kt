@@ -1,11 +1,18 @@
 package com.example.bullrun.ui.fragments.home
 
+import android.R
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -60,6 +67,8 @@ class HomeFragment : Fragment() {
 
         setupLast24HTabAndPager()
 
+        setTitleTextView()
+
 //        val topGainersAdapter = TopMoversAdapter(
 //            requireNotNull(context),
 //            (displayWidth * 0.4).toInt()
@@ -101,6 +110,23 @@ class HomeFragment : Fragment() {
 //        }
 
 
+    }
+
+    private fun setTitleTextView() {
+        val spannable: Spannable =
+            SpannableString(resources.getString(com.example.bullrun.R.string.Bullrun))
+        spannable.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireNotNull(context),
+                    com.example.bullrun.R.color.accent
+                )
+            ),
+            0,
+            4,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.txtTitle.setText(spannable, TextView.BufferType.SPANNABLE)
     }
 
     private fun setupLast24HTabAndPager() {

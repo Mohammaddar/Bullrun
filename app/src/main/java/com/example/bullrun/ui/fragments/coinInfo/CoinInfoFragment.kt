@@ -19,6 +19,8 @@ import com.example.bullrun.data.database.model.Coin
 import com.example.bullrun.databinding.FragmentCoinInfoBinding
 import com.example.bullrun.setupLineChart
 import com.example.bullrun.ui.MainActivity
+import com.example.bullrun.ui.fragments.portfolio.PortfolioFragmentDirections
+import com.example.bullrun.ui.fragments.portfolio.WalletListAdapter
 import com.example.bullrun.ui.model.CoinInfoUI
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -65,7 +67,7 @@ class CoinInfoFragment : Fragment() {
 
         setupStatisticsRecycler()
 
-        setupCommunityRecycler()
+        setupPagerCommunity()
 
         setupMainChartLAF(binding.lineChart)
 
@@ -138,27 +140,7 @@ class CoinInfoFragment : Fragment() {
         }
     }
 
-    private fun setupCommunityRecycler() {
-        val coinCommunityAdapter = CoinCommunityAdapter(
-            requireNotNull(context)
-        ) {
-            try {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(it.link))
-                startActivity(browserIntent)
-            }catch (ex:Exception){
-                Toast.makeText(context,"Wrong URL",Toast.LENGTH_SHORT).show()
-            }
-        }
-        binding.recyclerCommunity.apply {
-            this.adapter = coinCommunityAdapter
-            val lManager = LinearLayoutManager(activity)
-            lManager.orientation = RecyclerView.HORIZONTAL
-            layoutManager = lManager
-        }
-        viewModel.community.observe(viewLifecycleOwner) {
-            coinCommunityAdapter.submitList(it)
-        }
-    }
+
 
     private fun navigateToAddTransactionPage(coin: Coin) {
         findNavController().navigate(
@@ -216,5 +198,32 @@ class CoinInfoFragment : Fragment() {
         }
         Log.d("TAGDE", "setupBarChart finish")
         setupLineChart(requireNotNull(context), binding.lineChart, values, timeFrame)
+    }
+
+    private fun setupPagerCommunity() {
+        val coinCommunityAdapter = CoinCommunityAdapter(
+            requireNotNull(context)
+        ) {
+            try {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(it.link))
+                startActivity(browserIntent)
+            }catch (ex:Exception){
+                Toast.makeText(context,"Wrong URL",Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.pagerCommunity.run {
+            (getChildAt(0) as RecyclerView).apply {
+                offscreenPageLimit = 1
+                val padding = resources.getDimensionPixelOffset(R.dimen.dp22)
+                setPadding(padding, 0, padding, 0)
+                clipToPadding = false
+                //TODO Under
+            }
+            adapter = coinCommunityAdapter
+        }
+
+        viewModel.community.observe(viewLifecycleOwner) {
+            coinCommunityAdapter.submitList(it)
+        }
     }
 }

@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:background="?selectableItemBackground"
             android:clickable="true"
-            android:onClick="@{() -> holder.onClick.invoke(holder.holding)}">
+            android:onClick="@{() -> holder.onClickListener(holder.holding)}">
 
             <TextView
                 android:id="@+id/txt_holding_value"

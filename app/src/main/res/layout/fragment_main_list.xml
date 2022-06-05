@@ -6,33 +6,157 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="64dp" />
+
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:text="@string/crypto_assets"
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textColor="@color/primary"
+            android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/guideline9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"/>
+
+        <TextView
+            android:id="@+id/txtCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="@string/usd"
+            android:textColor="@color/gray_800"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_search_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:singleLine="false"
+            android:text="Search among 13420 crypto assets"
+            android:textColor="@color/gray_700"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_title"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_search"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/txt_search_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_filter_search"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="16dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/btn_search"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/search"
+                    android:tint="@color/gray_700"
+                    app:contentPadding="6dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/btn_search"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="12dp"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:hint="Search for Coins"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btn_filter_search"
+            style="@style/circleImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:background="@color/primary"
+            android:src="@drawable/filter"
+            android:tint="@color/white"
+            app:contentPadding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/card_search"
+            app:layout_constraintBottom_toBottomOf="@id/card_search"
+            app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chip_group"
+            app:layout_constraintTop_toBottomOf="@id/card_search"
             app:shapeAppearance="@style/BottomSheetDialogShape">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_coins"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_crypto_assets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabGravity="start"
+                    app:tabIndicator="@drawable/tab_indicator"
+                    app:tabIndicatorColor="@color/bg_orange_too_dark"
+                    app:tabPaddingEnd="8dp"
+                    app:tabPaddingStart="8dp"
+                    app:tabRippleColor="@color/transparent"
+                    app:tabSelectedTextColor="@color/primary"
+                    app:tabTextAppearance="@style/tabLayoutTitleTextApp"
+                    app:tabTextColor="@color/gray_500" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_pager_crypto_assets"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <Button
@@ -46,64 +170,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/btn_open_search_page"
-            style="@style/circleImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/search"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/chip_group"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/card_recycler"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/guideline_toolbar"-->
+<!--            app:selectionRequired="true"-->
+<!--            app:singleSelection="true">-->
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="56dp" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:checked="true"-->
+<!--                android:text="@string/all"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/chip_text"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:chipBackgroundColor="@color/chip_bg"-->
+<!--                app:chipCornerRadius="8dp" />-->
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/card_recycler"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline9"
-            app:selectionRequired="true"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="55dp"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/all"
-                android:textAlignment="center"
-                android:textColor="@color/chip_text"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="@color/chip_bg"
-                app:chipCornerRadius="8dp" />
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="@string/my_watchlist"
-                android:textAlignment="center"
-                android:textColor="@color/chip_text"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="@color/chip_bg"
-                app:chipCornerRadius="8dp" />
-        </com.google.android.material.chip.ChipGroup>
+<!--            <com.google.android.material.chip.Chip-->
+<!--                style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:checked="false"-->
+<!--                android:text="@string/my_watchlist"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/chip_text"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:chipBackgroundColor="@color/chip_bg"-->
+<!--                app:chipCornerRadius="8dp" />-->
+<!--        </com.google.android.material.chip.ChipGroup>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

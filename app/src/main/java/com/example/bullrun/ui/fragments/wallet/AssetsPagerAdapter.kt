@@ -28,6 +28,7 @@ class AssetsPagerBasicRecyclerViewFragment(val position: Int, val fragment: Frag
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d("TAGLC", "onCreateView ${this.javaClass.name}")
         binding = BasicRecyclerViewBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -36,7 +37,7 @@ class AssetsPagerBasicRecyclerViewFragment(val position: Int, val fragment: Frag
 
         when (position) {
             0 -> {
-                val holdingsAdapter = HoldingsAdapter(){
+                val holdingsAdapter = HoldingsAdapter() {
                     //TODO
                 }
                 binding.recycler.apply {
@@ -51,7 +52,7 @@ class AssetsPagerBasicRecyclerViewFragment(val position: Int, val fragment: Frag
                 }
             }
             1 -> {
-                val transactionsAdapter = TransactionsAdapter(){
+                val transactionsAdapter = TransactionsAdapter() {
                     //TODO
                 }
                 binding.recycler.apply {
@@ -62,11 +63,16 @@ class AssetsPagerBasicRecyclerViewFragment(val position: Int, val fragment: Frag
                 }
 
                 (fragment as WalletFragment).viewModel.transactions.observe(viewLifecycleOwner) {
-                    Log.d("TAGNMD","$it")
+                    Log.d("TAGNMD", "$it")
                     transactionsAdapter.submitList(it)
                 }
             }
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TAGLC", "onDestroy ${this.javaClass.name}")
     }
 }

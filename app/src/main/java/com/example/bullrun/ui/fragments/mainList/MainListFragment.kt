@@ -1,6 +1,5 @@
 package com.example.bullrun.ui.fragments.mainList
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,15 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bullrun.R
 import com.example.bullrun.databinding.FragmentMainListBinding
 import com.example.bullrun.ui.MainActivity
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainListFragment : Fragment() {
 
@@ -45,29 +40,12 @@ class MainListFragment : Fragment() {
 
         (activity as MainActivity).viewModel.bottomNavigationState.value="VISIBLE"
 
-        val adapter = MainListAdapter(requireNotNull(context)) {
-            findNavController().navigate(
-                MainListFragmentDirections.actionMainListFragmentToCoinInfoFragment(
-                    it
-                )
-            )
-        }
+        setupCryptoAssetsTabAndPager()
+//        binding.btnRefresh.setOnClickListener {
+//            adapter.refresh()
+//        }
 
-        binding.recyclerCoins.adapter = adapter
-        binding.recyclerCoins.layoutManager = LinearLayoutManager(activity)
-
-        lifecycleScope.launch {
-            viewModel.coinsList.collectLatest {
-                delay(200)
-                adapter.submitData(it)
-            }
-        }
-
-        binding.btnRefresh.setOnClickListener {
-            adapter.refresh()
-        }
-
-        binding.btnOpenSearchPage.setOnClickListener {
+        binding.btnSearch.setOnClickListener {
             findNavController().navigate(R.id.action_mainListFragment_to_searchListFragment)
         }
     }
@@ -75,6 +53,22 @@ class MainListFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         Log.d("TAGL", "onPause")
+    }
+
+    private fun setupCryptoAssetsTabAndPager() {
+        val pagerAdapter = CryptoAssetsPagerAdapter(this)
+        binding.viewPagerCryptoAssets.adapter = pagerAdapter
+
+        TabLayoutMediator(binding.tabLayoutCryptoAssets, binding.viewPagerCryptoAssets) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "All Coins"
+                }
+                1 -> {
+                    tab.text = "Watchlist"
+                }
+            }
+        }.attach()
     }
 
 }

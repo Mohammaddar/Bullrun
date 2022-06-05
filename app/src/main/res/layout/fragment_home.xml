@@ -39,29 +39,44 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_begin="56dp" />
+                        app:layout_constraintGuide_begin="64dp" />
+
+                    <ImageView
+                        android:id="@+id/img_logo"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/bull"
+                        app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/txt_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="66dp"
+                        android:layout_marginStart="8dp"
                         android:text="@string/Bullrun"
-                        android:textSize="18sp"
+                        android:textSize="22sp"
+                        android:textColor="@color/primary"
                         app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/img_logo"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/btn_open_search_page"
                         style="@style/circleImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@color/white"
                         android:src="@drawable/search"
-                        app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
+                        android:tint="@color/gray_800"
+                        app:contentPadding="12dp"
+                        app:layout_constraintTop_toTopOf="@id/img_logo"
+                        app:layout_constraintBottom_toBottomOf="@id/img_logo"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1096,7 +1111,7 @@
                     android:layout_height="28dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="64dp"
-                    android:src="@drawable/trend"
+                    android:src="@drawable/trending"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/constraint_top_coins" />
 
@@ -1104,7 +1119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12sp"
-                    android:text="Last 24 H"
+                    android:text="@string/last_24h"
                     android:textColor="@color/black_100"
                     android:textSize="22sp"
                     app:layout_constraintBottom_toBottomOf="@id/img_lst_24h"
@@ -1116,11 +1131,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
-                    app:shapeAppearance="@style/BottomSheetDialogShape"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/img_lst_24h">
+                    app:layout_constraintTop_toBottomOf="@id/img_lst_24h"
+                    app:shapeAppearance="@style/BottomSheetDialogShape">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1144,14 +1159,14 @@
                             app:tabRippleColor="@color/transparent"
                             app:tabSelectedTextColor="@color/primary"
                             app:tabTextAppearance="@style/tabLayoutTitleTextApp"
-                            app:tabTextColor="@color/gray_500"/>
+                            app:tabTextColor="@color/gray_500" />
 
                         <androidx.viewpager2.widget.ViewPager2
                             android:id="@+id/view_pager_lst_24h"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginTop="18dp"/>
+                            android:layout_marginTop="18dp"
+                            android:layout_weight="1" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>

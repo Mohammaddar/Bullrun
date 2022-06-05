@@ -53,4 +53,7 @@
     <string name="usd">USD</string>
     <string name="new_transaction">New Transaction</string>
     <string name="transaction">Transaction</string>
+    <string name="convert">Convert</string>
+    <string name="community">Community</string>
+    <string name="last_24h">Last 24H</string>
 </resources>

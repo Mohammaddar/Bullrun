@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="coinInfo"
             type="com.example.bullrun.ui.model.CoinInfoUI" />
@@ -22,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="56dp" />
+                app:layout_constraintGuide_begin="64dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline1"
@@ -34,179 +35,261 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btn_back"
                 style="@style/circleImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/search"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/primary"
+                android:src="@drawable/back"
+                app:contentPadding="16dp"
                 app:layout_constraintBottom_toBottomOf="@id/guideline_toolbar"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic" />
 
-            <TextView
-                android:id="@+id/txt_symbol_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{coinInfo.symbol}"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_back"
-                app:layout_constraintStart_toEndOf="@+id/btn_back"
-                app:layout_constraintTop_toTopOf="@+id/btn_back"
-                tools:text="BTC" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btn_add_favorite"
                 style="@style/circleImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/white"
                 android:src="@drawable/search"
+                android:tint="@color/gray_800"
+                app:contentPadding="12dp"
                 app:layout_constraintBottom_toBottomOf="@id/btn_back"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/btn_back" />
+                app:layout_constraintEnd_toStartOf="@id/btn_search"
+                app:layout_constraintTop_toTopOf="@id/btn_back"
+                app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btn_search"
                 style="@style/circleImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/search"
-                app:layout_constraintBottom_toBottomOf="@id/btn_back"
-                app:layout_constraintEnd_toStartOf="@id/btn_add_favorite"
-                app:layout_constraintTop_toTopOf="@id/btn_back" />
-
-            <TextView
-                android:id="@+id/txt_rank"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/shape_txt_rank"
-                android:gravity="center"
-                android:text="@{String.valueOf(coinInfo.MCapRank)}"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/guideline_toolbar"
-                tools:text="#12" />
-
-            <TextView
-                android:id="@+id/txt_name_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{coinInfo.name}"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/txt_rank"
-                app:layout_constraintStart_toEndOf="@id/txt_rank"
-                app:layout_constraintTop_toTopOf="@id/txt_rank"
-                tools:text="Bitcoin" />
-
-            <TextView
-                android:id="@+id/txt_price_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text='@{String.valueOf(coinInfo.currentPrice)}'
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@id/txt_rank"
-                app:layout_constraintTop_toBottomOf="@id/txt_rank"
-                tools:text="54089.54$" />
-
-            <TextView
-                android:id="@+id/txt_price_change_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:text='@{String.valueOf(coinInfo.priceChangePercentage)+" %"}'
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/txt_price_info"
-                app:layout_constraintStart_toEndOf="@id/txt_price_info"
-                tools:text="+24.86 %" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                context="@{context}"
-                imageUrl="@{coinInfo.image}"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginEnd="32dp"
-                android:contentDescription="@string/coin_logo"
-                app:layout_constraintBottom_toBottomOf="@id/txt_price_info"
+                android:layout_marginEnd="20dp"
+                android:background="@color/white"
+                android:src="@drawable/star"
+                android:tint="@color/gray_800"
+                app:contentPadding="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/btn_back"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_rank"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toTopOf="@id/btn_back"
+                app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic" />
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/line_chart"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintBottom_toBottomOf="@id/guideline1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_price_info" />
+                android:layout_marginEnd="20dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:layout_constraintTop_toBottomOf="@id/btn_back">
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/toggle_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/line_chart"
-                app:selectionRequired="true"
-                app:singleSelection="true">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_1d"
-                    style="@style/timeFrameSelectionToggleButton"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_1d" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_coin_overview"
+                        android:layout_width="match_parent"
+                        android:layout_height="230dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="24dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="8dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_1w"
-                    style="@style/timeFrameSelectionToggleButton"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_1w" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_1m"
-                    style="@style/timeFrameSelectionToggleButton"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_1m" />
+                            <androidx.constraintlayout.widget.Guideline
+                                android:id="@+id/guideline_50_v"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                app:layout_constraintGuide_percent="0.5" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_3m"
-                    style="@style/timeFrameSelectionToggleButton"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_3m" />
+                            <ImageView
+                                android:id="@+id/imageView"
+                                context="@{context}"
+                                imageUrl="@{coinInfo.image}"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="16dp"
+                                android:contentDescription="@string/coin_logo"
+                                app:layout_constraintBottom_toBottomOf="@id/txt_rank"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/txt_rank"
+                                tools:srcCompat="@tools:sample/avatars" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_all"
-                    style="@style/timeFrameSelectionToggleButton"
-                    android:layout_width="36dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/all" />
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+                            <TextView
+                                android:id="@+id/txt_rank"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginTop="24dp"
+                                android:background="@drawable/shape_txt_rank2"
+                                android:gravity="center"
+                                android:maxWidth="50dp"
+                                android:minWidth="30dp"
+                                android:text="@{String.valueOf(coinInfo.MCapRank)}"
+                                android:textColor="@color/gray_500"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="12" />
 
-            <Button
-                android:id="@+id/btn_add_transaction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/add_transaction"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/line_chart"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                            <TextView
+                                android:id="@+id/txt_name_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="@{coinInfo.name}"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@id/txt_rank"
+                                app:layout_constraintStart_toEndOf="@id/txt_rank"
+                                app:layout_constraintTop_toTopOf="@id/txt_rank"
+                                tools:text="Bitcoin" />
+
+                            <TextView
+                                android:id="@+id/txt_price_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text='@{String.valueOf(coinInfo.currentPrice)}'
+                                android:textSize="24sp"
+                                app:layout_constraintStart_toStartOf="@id/txt_rank"
+                                app:layout_constraintTop_toBottomOf="@id/txt_rank"
+                                tools:text="54089.54$" />
+
+                            <TextView
+                                android:id="@+id/txt_price_change_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginBottom="2dp"
+                                android:text='@{String.valueOf(coinInfo.priceChangePercentage)+" %"}'
+                                android:textColor="@color/green"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@id/txt_price_info"
+                                app:layout_constraintStart_toEndOf="@id/txt_price_info"
+                                tools:text="+24.86 %" />
+
+                            <TextView
+                                android:id="@+id/txt_lst24H_change_desc"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="24dp"
+                                android:singleLine="false"
+                                android:text="In the last 24 hours, the value of your assets has grown by $9742"
+                                android:textColor="@color/gray_800"
+                                android:textSize="12sp"
+                                android:textStyle="normal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/txt_price_info" />
+
+                            <Button
+                                android:id="@+id/btn_add_transaction"
+                                style="@style/StyleTextButtonBasic"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="16dp"
+                                android:backgroundTint="@color/primary"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:text="@string/transaction"
+                                android:textColor="@color/white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@id/guideline_50_v"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <Button
+                                android:id="@+id/btn_convert"
+                                style="@style/StyleTextButtonBasicOutlined"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="16dp"
+                                android:insetTop="0dp"
+                                android:insetBottom="0dp"
+                                android:text="@string/convert"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@id/guideline_50_v" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/line_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_coin_overview" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/toggle_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/line_chart"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_1d"
+                            style="@style/timeFrameSelectionToggleButton"
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_1d" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_1w"
+                            style="@style/timeFrameSelectionToggleButton"
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_1w" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_1m"
+                            style="@style/timeFrameSelectionToggleButton"
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_1m" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_3m"
+                            style="@style/timeFrameSelectionToggleButton"
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_3m" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_all"
+                            style="@style/timeFrameSelectionToggleButton"
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/all" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -215,10 +298,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            app:behavior_peekHeight="60dp"
-            tools:behavior_peekHeight="650dp"
+            android:visibility="visible"
+            app:behavior_peekHeight="88dp"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-            app:shapeAppearance="@style/BottomSheetDialogShape">
+            app:shapeAppearance="@style/BottomSheetDialogShape"
+            tools:behavior_peekHeight="88dp">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -228,50 +312,64 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="16dp"
-                        android:src="@drawable/menu"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_88dp_h"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="88dp"/>
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/btn_statistics"
+                        style="@style/circleImageView"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@color/primary"
+                        android:src="@drawable/up"
+                        android:tint="@color/white"
+                        app:contentPadding="16dp"
+                        app:layout_constraintBottom_toBottomOf="@id/guideline_88dp_h"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/gray_300" />
+                        app:shapeAppearanceOverlay="@style/ShapeIconButtonBasic" />
 
                     <TextView
                         android:id="@+id/txt_statistics_lbl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="20dp"
-                        android:text="Statistics"
-                        android:textSize="18sp"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/statistics"
+                        android:textSize="22sp"
+                        android:textColor="@color/primary"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/guideline_88dp_h"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_statistics"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:minHeight="60dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/txt_statistics_lbl" />
+                        app:layout_constraintTop_toBottomOf="@id/guideline_88dp_h" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_desc"
-                        style="@style/totalBalanceCardView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="24dp"
+                        android:layout_marginStart="32dp"
+                        app:layout_goneMarginEnd="32dp"
                         android:minHeight="100dp"
+                        app:cardCornerRadius="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/recycler_statistics">
+                        app:layout_constraintTop_toBottomOf="@id/recycler_statistics"
+                        app:cardElevation="4dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -281,11 +379,11 @@
                                 android:id="@+id/txt_desc_q"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginTop="12dp"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginTop="20dp"
                                 android:text='@{"What is "+coinInfo.name+"?"}'
-                                android:textColor="@color/gray_100"
-                                android:textSize="16sp"
+                                android:textColor="@color/primary"
+                                android:textSize="18sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:text="What is Bitcoin?" />
@@ -293,13 +391,13 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="12dp"
                                 android:layout_marginTop="4dp"
-                                android:layout_marginBottom="12dp"
+                                android:layout_marginEnd="28dp"
+                                android:layout_marginBottom="28dp"
                                 android:justificationMode="inter_word"
                                 android:text="@{coinInfo.desc}"
-                                android:textColor="@color/gray_100"
-                                android:textSize="13sp"
+                                android:textColor="@color/gray_800"
+                                android:textSize="12sp"
                                 android:textStyle="normal"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -314,7 +412,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="24dp"
                         android:layout_marginEnd="32dp"
                         app:layout_constraintTop_toBottomOf="@id/card_desc">
 
@@ -323,6 +421,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="24H Range"
+                            android:textColor="@color/primary"
+                            android:textSize="14sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -393,15 +493,15 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_ath"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="32dp"
-                        android:backgroundTint="@color/primary"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="24dp"
+                        android:backgroundTint="@color/white"
+                        app:layout_constraintEnd_toEndOf="@id/card_desc"
+                        app:layout_constraintStart_toStartOf="@id/card_desc"
                         app:layout_constraintTop_toBottomOf="@id/constraint_price_bar"
-                        app:shapeAppearance="@style/leftHalfRounded16">
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -411,36 +511,54 @@
                                 android:id="@+id/txt_atl_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginTop="8dp"
-                                android:textColor="@color/gray_100"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/all_time_high"
+                                android:textSize="14sp"
+                                android:textColor="@color/primary"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:text="@string/all_time_high" />
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="28dp"
+                                android:layout_marginStart="28dp"
+                                android:layout_marginBottom="20dp"
                                 android:text='@{coinInfo.name+" hit an all time high of $"+coinInfo.ath +" on "+ coinInfo.athDate}'
-                                android:textColor="@color/gray_100"
-                                android:textSize="13sp"
+                                android:textColor="@color/gray_800"
+                                android:textSize="12sp"
                                 android:textStyle="normal"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="@id/txt_atl_title"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/txt_atl_title"
                                 tools:text="Bitcoin hit an all time high of $69,044.77 on Nov 10, 2021 (6 months)." />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_community"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                    <TextView
+                        android:id="@+id/txt_community_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/community"
+                        android:textSize="22sp"
+                        android:textColor="@color/primary"
                         app:layout_constraintTop_toBottomOf="@id/card_ath"
-                        android:layout_marginTop="16dp"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_goneMarginStart="36dp"
+                        android:layout_marginTop="24dp"/>
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/pager_community"
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txt_community_lbl"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
         </FrameLayout>

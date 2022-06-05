@@ -33,6 +33,8 @@ class HoldingVH private constructor(private val binding: HoldingItemBinding) :
         binding.holder = this
     }
 
+    fun onClickListener(holding: HoldingUI)=onClick(holding)
+
     companion object {
         fun create(parent: ViewGroup): HoldingVH {
             val binding =
