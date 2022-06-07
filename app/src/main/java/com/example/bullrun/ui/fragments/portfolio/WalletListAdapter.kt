@@ -48,7 +48,7 @@ class WalletVH private constructor(val binding: WalletPagerItemBinding) :
 
 class WalletListDiffUtil : DiffUtil.ItemCallback<WalletUI>() {
     override fun areItemsTheSame(oldItem: WalletUI, newItem: WalletUI): Boolean {
-        return oldItem.walletName == newItem.walletName
+        return oldItem.name == newItem.name
     }
 
     override fun areContentsTheSame(oldItem: WalletUI, newItem: WalletUI): Boolean {

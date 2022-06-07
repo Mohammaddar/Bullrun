@@ -1,6 +1,7 @@
 package com.example.bullrun.ui.fragments.portfolio
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,7 +91,7 @@ class PortfolioFragment : Fragment() {
         val walletAdapter = WalletListAdapter(requireNotNull(context)) {
             findNavController().navigate(
                 PortfolioFragmentDirections.actionPortfolioFragmentToWalletFragment2(
-                    it.walletName
+                    it.name
                 )
             )
             //TODO
@@ -106,8 +107,9 @@ class PortfolioFragment : Fragment() {
             adapter = walletAdapter
         }
 
-        viewModel.walletList.observe(viewLifecycleOwner) {
+        viewModel.walletsList.observe(viewLifecycleOwner) {
             walletAdapter.submitList(it)
+            Log.d("TAGHE","$it")
         }
     }
 

@@ -126,4 +126,10 @@ class CoinRepository private constructor(context: Context) {
         }
     }
 
+    suspend fun getListOfCoinsById(ids:List<String>):List<CoinMarkets>?{
+        return invokeOrCatch {
+            coinService.getCoinsByIDs(ids)
+        }
+    }
+
 }

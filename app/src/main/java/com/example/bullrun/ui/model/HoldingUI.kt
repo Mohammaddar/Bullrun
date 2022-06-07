@@ -1,15 +1,12 @@
 package com.example.bullrun.ui.model
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
-import com.bumptech.glide.Glide
 import com.example.bullrun.data.database.model.Asset
 import com.example.bullrun.decimalCount
-import com.github.mikephil.charting.data.Entry
 
 sealed class HoldingItem
 data class HoldingUI(
@@ -22,10 +19,8 @@ data class HoldingUI(
     var totalSellingVolume: Double = 0.0,
     val totalBuyingCost: Double = 0.0,
     val totalSellingIncome: Double = 0.0,
-    val imageBitmap: Bitmap?=null,
-    val theme:String,
-    val tickers:List<Entry>
-) :HoldingItem() {
+    val walletName:String
+) : HoldingItem() {
 
     private val _totalBuyingVolume = totalBuyingVolume
 
@@ -46,7 +41,7 @@ data class HoldingUI(
     private val _pnlValue = (currentPrice - _avgEntry) * _netHoldingVolume
     val pnlValue: Double = _pnlValue.decimalCount(2)
 
-    private val _pnlPercentage = _pnlValue / totalBuyingCost
+    private val _pnlPercentage = (_pnlValue / totalBuyingCost) * 100
     val pnlPercentage: Double = _pnlPercentage.decimalCount(2)
 
     //
@@ -60,47 +55,10 @@ data class HoldingUI(
 
 
     companion object {
-        fun transformDataModelToUiModel(ls: List<Asset>,context:Context): List<HoldingUI> {
+        fun transformDataModelToUiModel(ls: List<Asset>): List<HoldingUI> {
             Log.d("TAGP", "thread4 : ${Thread.currentThread().name}")
             return ls.map {
                 Log.d("TAGI", "${it.coinName} 1 : ${Thread.currentThread().name}")
-                val bitmap = Glide.with(context).asBitmap().load(it.image).submit().get()
-                Log.d("TAGI", "${it.coinName} 2 : ${Thread.currentThread().name}")
-                val theme=getTheme(bitmap,it.coinName)
-                Log.d("TAGI", "${it.coinName} 5 : ${Thread.currentThread().name}")
-                val tickers = mutableListOf<Entry>()
-                tickers.run {
-                    add(Entry(0f, 100f))
-                    add(Entry(1f, 104f))
-                    add(Entry(2f, 110f))
-                    add(Entry(3f, 108f))
-                    add(Entry(4f, 124f))
-                    add(Entry(5f, 128f))
-                    add(Entry(6f, 120f))
-                    add(Entry(7f, 118f))
-                    add(Entry(8f, 121f))
-                    add(Entry(9f, 114f))
-                    add(Entry(10f, 112f))
-                    add(Entry(11f, 111f))
-                    add(Entry(12f, 108f))
-                    add(Entry(13f, 112f))
-                    add(Entry(14f, 114f))
-                    add(Entry(15f, 115f))
-                    add(Entry(16f, 111f))
-                    add(Entry(17f, 108f))
-                    add(Entry(18f, 107f))
-                    add(Entry(19f, 108f))
-                    add(Entry(20f, 105f))
-                    add(Entry(21f, 107f))
-                    add(Entry(22f, 106f))
-                    add(Entry(23f, 104f))
-                    add(Entry(24f, 106f))
-                    add(Entry(25f, 107f))
-                    add(Entry(26f, 109f))
-                    add(Entry(27f, 105f))
-                    add(Entry(28f, 104f))
-                    add(Entry(29f, 106f))
-                }
                 HoldingUI(
                     it.coinId,
                     it.coinName,
@@ -111,17 +69,16 @@ data class HoldingUI(
                     it.totalSellingVolume,
                     it.totalBuyingCost,
                     it.totalSellingIncome,
-                    bitmap,
-                    theme,
-                    tickers
+                    it.walletName
                 )
             }
         }
-        private fun getTheme(bitmap: Bitmap,coinName: String):String {
+
+        private fun getTheme(bitmap: Bitmap, coinName: String): String {
             Log.d("TAGI", "${coinName} 3 : ${Thread.currentThread().name}")
-            var r=0
-            var g=0
-            var b=0
+            var r = 0
+            var g = 0
+            var b = 0
             val width = bitmap.width
             val height = bitmap.height
             var pixel = 0
@@ -133,9 +90,9 @@ data class HoldingUI(
                     b += pixel.blue
                 }
             }
-            r/=25
-            g/=25
-            b/=25
+            r /= 25
+            g /= 25
+            b /= 25
 //            Log.d("TAGCO", "${coinName} r:$r , g=$g , b=$b")
 //            val colors = listOf(
 //                Triple(222, 226, 230),
@@ -165,4 +122,4 @@ data class HoldingUI(
 
 }
 
-data class EmptyUI(val name: String = "empty"):HoldingItem()
+data class EmptyUI(val name: String = "empty") : HoldingItem()

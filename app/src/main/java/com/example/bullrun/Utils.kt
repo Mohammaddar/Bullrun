@@ -156,7 +156,11 @@ fun Double.decimalCount(decimalCount:Int):Double{
     if(this.toString().contains("E")){
         value=value.substring(0,value.indexOf("E"))
     }
-    return BigDecimal(value).setScale(decimalCount, RoundingMode.HALF_EVEN).toDouble()
+    return try {
+        BigDecimal(value).setScale(decimalCount, RoundingMode.HALF_EVEN).toDouble()
+    }catch (e:Exception){
+        0.0
+    }
 }
 
 fun setupLineChartTopCoin(context: Context, chart: LineChart, values: List<Entry>) {

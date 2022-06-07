@@ -38,6 +38,7 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
                     image = it.image.large ?: "",
                     symbol = it.symbol,
                     currentPrice = it.marketData?.currentPrice?.get("usd") ?: 0.0,
+                    priceChangePercentage24H = it.marketData?.priceChangePercentage24h ?: 0.0,
                     price = buyingPrice,
                     volume = buyingVolume,
                     walletName = walletName
@@ -51,8 +52,8 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
             coin.value?.let {
                 portfolioRepository.sellAsset(
                     coinId = it.id,
-                    coinName=it.name,
-                    symbol=it.symbol,
+                    coinName = it.name,
+                    symbol = it.symbol,
                     volume = sellingVolume,
                     price = sellingPrice,
                     walletName = walletName,

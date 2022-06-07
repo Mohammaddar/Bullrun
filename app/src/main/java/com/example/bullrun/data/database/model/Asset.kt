@@ -27,6 +27,9 @@ data class Asset(
     @ColumnInfo(name = "current_price")
     val currentPrice: Double,
 
+    @ColumnInfo(name = "price_change_percentage_24h")
+    val priceChangePercentage24H: Double,
+
     @ColumnInfo(name = "total_buying_volume")
     val totalBuyingVolume: Double = 0.0,
 

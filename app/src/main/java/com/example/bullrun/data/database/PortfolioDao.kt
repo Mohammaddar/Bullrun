@@ -18,13 +18,13 @@ interface PortfolioDao {
     suspend fun addAsset(asset: Asset)
 
     @Query("SELECT * FROM portfolio_table WHERE walletName=:walletName")
-    fun getAllAssetsInWallet(walletName: String): Flow<List<Asset>>
+    fun getAllAssetsInWalletFlow(walletName: String): Flow<List<Asset>>
 
     @Query("SELECT coinId FROM portfolio_table WHERE walletName=:walletName")
     suspend fun getAllAssetsIDsInWallet(walletName: String): List<String>
 
-    @Query("UPDATE portfolio_table SET current_price=:currentPrice WHERE coinId=:coinId;")
-    suspend fun updateCurrentPrice(coinId: String, currentPrice: Double)
+    @Query("UPDATE portfolio_table SET current_price=:currentPrice, price_change_percentage_24h=:priceChangePercentage24H WHERE coinId=:coinId;")
+    suspend fun updatePriceInfo(coinId: String, currentPrice: Double,priceChangePercentage24H:Double)
 
     @Query(
         "UPDATE portfolio_table SET total_buying_volume = total_buying_volume+:volume," +
@@ -40,5 +40,9 @@ interface PortfolioDao {
     )
     suspend fun sellAsset(coinId: String, volume: Double, income: Double,walletName: String)
 
+    @Query("SELECT * FROM portfolio_table")
+    fun getAllAssetsFlow():Flow<List<Asset>>
 
+    @Query("SELECT coinId FROM portfolio_table")
+    suspend fun getAllAssetsIds():List<String>
 }

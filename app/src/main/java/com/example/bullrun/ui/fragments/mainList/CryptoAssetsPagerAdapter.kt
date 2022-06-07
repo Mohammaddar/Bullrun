@@ -3,6 +3,7 @@ package com.example.bullrun.ui.fragments.mainList
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -10,11 +11,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.bullrun.databinding.BasicRecyclerViewBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 
 class CryptoAssetsPagerAdapter(val fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 2
@@ -77,6 +80,15 @@ class AllCoinsFragment() : Fragment() {
         super.onDestroy()
         Log.d("TAGLC", "onDestroy ${this.javaClass.name}")
     }
+}
+
+class RecyclerViewDisabler : OnItemTouchListener {
+    override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+        return true
+    }
+
+    override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
 }
 
 class WatchListFragment() : Fragment() {

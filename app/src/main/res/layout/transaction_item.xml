@@ -83,7 +83,7 @@
                 android:textStyle="normal"
                 app:layout_constraintTop_toTopOf="@id/txt_transaction_amount"
                 app:layout_constraintBottom_toBottomOf="@id/txt_transaction_amount"
-                android:text="@string/buy"
+                android:text="@{holder.transaction.type}"
                 android:textAllCaps="true"
                 app:layout_constraintEnd_toStartOf="@id/transaction_type_identifier"
                 android:layout_marginEnd="32dp"

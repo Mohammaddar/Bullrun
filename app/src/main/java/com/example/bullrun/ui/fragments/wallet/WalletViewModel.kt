@@ -53,7 +53,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                 if (walletName != "") {
                     //update assets prices first
                     Log.d("TAGP", "update : ${Thread.currentThread().name}")
-                    portfolioRepository.updateAssetsInfo(
+                    portfolioRepository.updateAssetsInfoById(
                         portfolioRepository.getAllAssetsIDsInWallet(
                             walletName
                         )
@@ -62,11 +62,12 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                     Log.d("TAGP", "unempty wallet name : ${Thread.currentThread().name}")
                     launch {
                         Log.d("TAGP", "collect-1: ${Thread.currentThread().name}")
-                        portfolioRepository.getAllAssetsInWallet(walletName).distinctUntilChanged()
+                        portfolioRepository.getAllAssetsInWalletFlow(walletName)
+                            .distinctUntilChanged()
                             .map { it2 ->
                                 Log.d("TAGP", "map : ${Thread.currentThread().name}")
                                 delay(350)
-                                HoldingUI.transformDataModelToUiModel(it2, application)
+                                HoldingUI.transformDataModelToUiModel(it2)
                                     .toMutableList()
                             }.flowOn(Dispatchers.Default).collectLatest { it3 ->
                                 Log.d("TAGP", "collect2: ${Thread.currentThread().name}")
@@ -81,7 +82,7 @@ class WalletViewModel(application: Application) : AndroidViewModel(application) 
                     Log.d("TAGP", "collect18: ${Thread.currentThread().name}")
                     launch {
                         Log.d("TAGP", "collect19: ${Thread.currentThread().name}")
-                        portfolioRepository.getTransactionsByWallet(walletName).map { it2 ->
+                        portfolioRepository.getTransactionsByWalletFlow(walletName).map { it2 ->
                             Log.d("TAGP", "collect20: ${Thread.currentThread().name}")
                             delay(350)
                             Log.d("TAGP", "collect21: ${Thread.currentThread().name}")

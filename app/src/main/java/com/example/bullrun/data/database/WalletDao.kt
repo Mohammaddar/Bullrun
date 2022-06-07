@@ -15,8 +15,8 @@ interface WalletDao {
     suspend fun addWallet(wallet: Wallet)
 
     //while using flow as output,there is no need to declare fun as suspend
-    @Query("SELECT * FROM wallet_table")
-    fun getAll(): Flow<List<Wallet>>
+    @Query("SELECT walletName FROM wallet_table")
+    fun getAllNamesFlow(): Flow<List<String>>
 
 
 }

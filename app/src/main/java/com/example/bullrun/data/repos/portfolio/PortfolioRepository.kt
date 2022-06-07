@@ -35,6 +35,7 @@ class PortfolioRepository private constructor(context: Context) {
         image: String,
         symbol: String,
         currentPrice: Double,
+        priceChangePercentage24H: Double,
         price: Double,
         volume: Double,
         walletName: String,
@@ -52,6 +53,7 @@ class PortfolioRepository private constructor(context: Context) {
                             image = image,
                             symbol = symbol,
                             currentPrice = currentPrice,
+                            priceChangePercentage24H=priceChangePercentage24H,
                             totalBuyingVolume = volume,
                             totalSellingVolume = 0.0,
                             totalBuyingCost = price * volume,
@@ -104,8 +106,8 @@ class PortfolioRepository private constructor(context: Context) {
         }
     }
 
-    fun getAllAssetsInWallet(walletName: String): Flow<List<Asset>> {
-        return coinDataBase.portfolioDao.getAllAssetsInWallet(walletName)
+    fun getAllAssetsInWalletFlow(walletName: String): Flow<List<Asset>> {
+        return coinDataBase.portfolioDao.getAllAssetsInWalletFlow(walletName)
     }
 
 
@@ -113,16 +115,37 @@ class PortfolioRepository private constructor(context: Context) {
         return coinDataBase.portfolioDao.getAllAssetsIDsInWallet(walletName)
     }
 
-    suspend fun updateAssetsInfo(ids: List<String>) {
+    suspend fun updateAssetsInfoById(ids: List<String>) {
         invokeOrCatch {
             val assets = coinService.getCoinsByIDs(ids)
             coinDataBase.withTransaction {
                 Log.d("TAGP", "updateAssetsInfo: ${Thread.currentThread().name}")
                 assets.forEach {
                     it.id.let { it1 ->
-                        coinDataBase.portfolioDao.updateCurrentPrice(
+                        coinDataBase.portfolioDao.updatePriceInfo(
                             it1,
-                            it.currentPrice
+                            it.currentPrice,
+                            it.priceChangePercentage24h
+                        )
+                    }
+                }
+            }
+            Log.d("TAGP", "updateAssetsInfo finish: ${Thread.currentThread().name}")
+        }
+    }
+
+    suspend fun updateAllAssetsInfo() {
+        invokeOrCatch {
+            val ids=coinDataBase.portfolioDao.getAllAssetsIds()
+            val assets = coinService.getCoinsByIDs(ids)
+            coinDataBase.withTransaction {
+                Log.d("TAGP", "updateAssetsInfo: ${Thread.currentThread().name}")
+                assets.forEach {
+                    it.id.let { it1 ->
+                        coinDataBase.portfolioDao.updatePriceInfo(
+                            it1,
+                            it.currentPrice,
+                            it.priceChangePercentage24h
                         )
                     }
                 }
@@ -135,11 +158,11 @@ class PortfolioRepository private constructor(context: Context) {
         invokeOrCatch { coinDataBase.walletDao.addWallet(wallet) }
     }
 
-    fun getAllWallets(): Flow<List<Wallet>> {
-        return coinDataBase.walletDao.getAll()
+    fun getAllWalletsNamesFlow(): Flow<List<String>> {
+        return coinDataBase.walletDao.getAllNamesFlow()
     }
 
-    suspend fun getTransactionsByWallet(walletName: String): Flow<List<Transaction>> {
+    fun getTransactionsByWalletFlow(walletName: String): Flow<List<Transaction>> {
         return coinDataBase.transactionDao.getTransactionByWallet(walletName)
     }
 
@@ -153,6 +176,10 @@ class PortfolioRepository private constructor(context: Context) {
                 walletName
             )
         }
+    }
+
+    fun getAllHoldingAssetsFlow():Flow<List<Asset>>{
+        return coinDataBase.portfolioDao.getAllAssetsFlow()
     }
 
 }
