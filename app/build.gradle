@@ -89,6 +89,13 @@ dependencies {
     annotationProcessor "com.airbnb.android:epoxy-processor:$epoxyVersion"
 
     testImplementation 'junit:junit:4.13.2'
+
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+    testImplementation "org.hamcrest:hamcrest-all:1.3"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
